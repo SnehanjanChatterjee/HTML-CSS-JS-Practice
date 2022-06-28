@@ -1,0 +1,27 @@
+body {
+    background-color: lightgray;
+}
+.container-style {
+    width: 40%;
+    border-radius: 5px;
+}
+.bg-color {
+    background-color: #ffffff;
+}
+.signup-border {
+    border: 2px solid black;
+}
+.logo {
+    width: 10%;
+    margin: auto;
+}
+.pd-top {
+    padding-top: 20px;
+}
+.pd-bottom {
+    padding-bottom: 20px;
+}
+.btn-centre {
+    width: 18%;
+    margin: auto;
+}

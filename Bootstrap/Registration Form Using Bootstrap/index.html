@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hindu(Bootstrap)</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="RegsUsingBootstrap.css">
+</head>
+
+<body>
+    <div class="container container-style">
+        <div class="row bg-color">
+            <div class="col-12">
+                <!-- Logo -->
+                <div class="row logo">
+                    <img src="Logo2.jpeg" alt="Logo">
+                </div>
+                <!-- Logo ends -->
+                <!-- Form row -->
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Form -->
+                        <form action="">
+                            <!-- First Name -->
+                            <div class="form-group">
+                                <label for="firstname">First Name<span style="color: red">*</span></label>
+                                <input type="text" name="firstname" id="firstname" class="form-control" required>
+                            </div>
+                            <!-- Last name -->
+                            <div class="form-group">
+                                <label for="lastname">Last Name<span style="color: red">*</span></label>
+                                <input type="text" class="form-control" id="lastname" required>
+                            </div>
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email">Email<span style="color: red">*</span></label>
+                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                    required>
+                                <small id="email" class="form-text text-muted">We'll never share your email with anyone
+                                    else.</small>
+                            </div>
+                            <!-- Password -->
+                            <div class="form-group">
+                                <label for="password">Password<span style="color: red">*</span></label>
+                                <input type="password" class="form-control" id="password" required>
+                            </div>
+                            <!-- Mobile No -->
+                            <div class="form-group">
+                                <label for="mobileno">Mobile No.</label>
+                                <input type="tel" class="form-control" id="mobileno" pattern="[0-9]{10}">
+                            </div>
+                            <!-- Interest row -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- Interest header -->
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p>Choose your interests</p>
+                                        </div>
+                                    </div>
+                                    <!-- Interest header ends -->
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="sports"
+                                                    id="sports">
+                                                <label class="form-check-label" for="sports">
+                                                    Sports
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="bollywood"
+                                                    id="bollywood">
+                                                <label class="form-check-label" for="bollywood">
+                                                    Bollywood
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="politics"
+                                                    id="politics">
+                                                <label class="form-check-label" for="politics">
+                                                    Politics
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="foreignaffairs"
+                                                    id="foreignaffairs">
+                                                <label class="form-check-label" for="foreignaffairs">
+                                                    Foreign Affairs
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="sharemarket"
+                                                    id="sharemarket">
+                                                <label class="form-check-label" for="sharemarket">
+                                                    Share Market
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="matrimonial"
+                                                    id="matrimonial">
+                                                <label class="form-check-label" for="matrimonial">
+                                                    Matrimonial
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Interest row ends -->
+                            <!-- sms alert -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="smsalert" id="smsalert">
+                                        <label class="form-check-label" for="smsalert">
+                                            I want sms alert.
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- sms alert ends -->
+                            <!-- button -->
+                            <div class="row pd-top pd-bottom btn-centre">
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Form ends -->
+                    </div>
+                </div>
+                <!-- Form row ends -->
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>

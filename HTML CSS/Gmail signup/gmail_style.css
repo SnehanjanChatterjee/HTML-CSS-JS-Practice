@@ -1,0 +1,59 @@
+.signup {
+	width: 80%;
+	margin: auto;
+	text-align: center;
+	padding-top: 200px;
+}
+/*.signupform {
+	background-color: #f6f8fa;
+	padding: 50px 50px 50px 50px;
+}*/
+.main {
+	font-size: 1.8em;
+	width: 35%;
+	margin: auto;
+	text-align: center;
+	border: 1px solid gray;
+	text-align: left;
+}
+.logo {
+	width: 20%;
+	margin: auto;
+}
+.text-section {
+	font-size: 0.8em;
+	text-align: center;
+	font-family: sans-serif;
+}
+.username {
+	padding-left: 10px;
+}
+.password {
+	padding-left: 10px;
+}
+#un {
+	padding-top: 20px;
+	display: block;
+}
+#pw {
+	padding-top: 20px;
+	display: block;
+}
+.login {
+	padding: 20px 0px 20px 10px;
+}
+button {
+	font-size: 1.2em;
+}
+button[type='button']:hover {
+	background-color: blue;
+	color: #ffffff;
+}
+input {
+	padding-left: 10px;
+}
+.warning {
+	padding-left: 10px;
+	font-size: 0.5em;
+	font-family: sans-serif;
+}

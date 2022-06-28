@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Objects</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <style>
+        body {
+            background-image: url("woman-wearing-brown-shirt-carrying-black-leather-bag-on-1106468.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container jumbotron" style="margin-top: 20px;">
+        <!-- Search row -->
+        <div class="row" style="padding-bottom: 20px;">
+            <!-- <div class="col-6 input-group mb-3">
+                <input type="text" id="searchByIDInput" class="form-control" placeholder="Search by ID"
+                    aria-label="Search by ID" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button id="searchByIDBtn" class="btn btn-outline-secondary" type="button"
+                        onclick="searchStudent()">Button</button>
+                </div>
+            </div>
+            <div class="col-6 input-group mb-3">
+                <input type="text" id="searchByNameInput" class="form-control" placeholder="Search by name"
+                    aria-label="Search by name" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button id="searchByNameBtn" class="btn btn-outline-secondary" type="button"
+                        onclick="searchStudent()">Button</button>
+                </div>
+            </div> -->
+            <div class="col-8">
+                <input type="email" class="form-control" aria-describedby="search" placeholder="Search by name or ID"
+                    id="myInput" onkeyup="searchStudent()" placeholder="Search for names.." />
+                <small class="form-text text-muted">Search by name or id.</small>
+            </div>
+            <div class="col-4">
+                <p class="message" name="message" id="message" style="display: none;"></p>
+            </div>
+        </div>
+        <!-- Search row ends -->
+        <div class="row">
+            <!-- Student Form col -->
+            <div class="col-md-5">
+                <form class="studentform">
+                    <h2>Student Details</h2>
+                    <h6>
+                        (Fields marked <span style="color: red">*</span> are
+                        mandatory)
+                    </h6>
+                    <!-- ID -->
+                    <div class="form-group">
+                        <label for="stuid">ID<span style="color: red">*</span></label>
+                        <input type="text" name="stuid" id="stuid" placeholder="Student ID" class="form-control"
+                            required onblur="checkNum()" />
+                    </div>
+                    <!-- First Name -->
+                    <div class="form-group">
+                        <label for="firstname">First Name<span style="color: red">*</span></label>
+                        <input type="text" name="firstname" id="firstname" placeholder="First Name" class="form-control"
+                            required onblur="checkFirstName()" />
+                    </div>
+                    <!-- Last name -->
+                    <div class="form-group">
+                        <label for="lastname">Last Name<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" id="lastname" placeholder="Last Name" required
+                            onblur="checkLastName()" />
+                    </div>
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email<span style="color: red">*</span></label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required
+                            placeholder="Email" onblur="checkEmail()" />
+                        <small id="email" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="button" class="btn-sm btn-outline-primary" onclick="addStudent()">
+                                ADD STUDENT
+                            </button>
+                            <button type="button" id="updatebtn" class="btn-sm btn-outline-secondary"
+                                onclick="editStudent()" disabled>
+                                UPDATE STUDENT
+                            </button>
+                            <!-- <button type="button" class="btn-sm btn-outline-info" onclick="clear()">CLEAR DATA</button> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Student Form col ends -->
+
+            <!-- Table col -->
+            <div class="col-md-7" style="max-height: 300px; overflow-x:scroll">
+                <table class="table table-sm" id="studentsTable" style="overflow-x: scroll;">
+                    <thead class="thead">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Edit Data</th>
+                            <th scope="col">Delete Data</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <!-- Table col ends -->
+            <!-- <div class="col-1">
+                <button type="button" class="btn btn-primary" onclick="editStudent()">EDIT</button>
+            </div> -->
+        </div>
+    </div>
+
+    <script src="objects.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

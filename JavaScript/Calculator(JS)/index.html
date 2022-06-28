@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // function ADD() {
+        //     var x = document.getElementById('NumberOne').value;
+        //     var y = document.getElementById('NumberTwo').value;
+        //     var out = parseInt(x) + parseInt(y);
+        //     document.getElementById('banner').innerText = out;
+        // }
+        // function SUB() {
+        //     var x = document.getElementById('NumberOne').value;
+        //     var y = document.getElementById('NumberTwo').value;
+        //     var out = parseInt(x) - parseInt(y);
+        //     document.getElementById('banner').innerText = out;
+        // }
+        // function MUL() {
+        //     var x = document.getElementById('NumberOne').value;
+        //     var y = document.getElementById('NumberTwo').value;
+        //     var out = parseInt(x) * parseInt(y);
+        //     document.getElementById('banner').innerText = out;
+        // }
+        // function DIV() {
+        //     var x = document.getElementById('NumberOne').value;
+        //     var y = document.getElementById('NumberTwo').value;
+        //     var out = parseInt(x) / parseInt(y);
+        //     document.getElementById('banner').innerText = out;
+        // }
+        function calculate(a) {
+            var x = document.getElementById('NumberOne').value;
+            var y = document.getElementById('NumberTwo').value;
+            var out;
+            if (a == 1)
+                out = parseInt(x) + parseInt(y);
+            else if (a == 2)
+                out = parseInt(x) - parseInt(y);
+            else if (a == 3)
+                out = parseInt(x) * parseInt(y);
+            else
+                out = parseInt(x) / parseInt(y);
+            document.getElementById('banner').innerText = out;
+        }
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <label for="NumberOne" style="display: block;">NUMBER ONE</label>
+        <input type="text" id="NumberOne" name="NumberOne">
+        <label for="NumberTwo" style="display: block;">NUMBER TWO</label>
+        <input type="text" id="NumberTwo" name="NumberTwo" style="display: block;">
+
+        <!-- <button type="button" onclick="ADD()">ADD</button>
+        <button type="button" onclick="SUB()">SUB</button>
+        <button type="button" onclick="MUL()">MUL</button>
+        <button type="button" onclick="DIV()">DIV</button> -->
+        <button type="button" onclick="calculate(1)">ADD</button>
+        <button type="button" onclick="calculate(2)">SUB</button>
+        <button type="button" onclick="calculate(3)">MUL</button>
+        <button type="button" onclick="calculate(4)">DIV</button>
+        <br>
+        <h3 id="banner"></h3>
+    </form>
+</body>
+
+</html>

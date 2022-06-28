@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" id="col1">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var books = [];
+
+        window.onload = function () {
+            init()
+            books.forEach((book) => {
+                setUpCard(book)
+            })
+
+        }
+
+        function setUpCard(book) {
+            let card = document.createElement('div')
+            card.classList.add('card')
+
+            let cardImageTop = document.createElement('img')
+            cardImageTop.src = './images/' + book.image
+            cardImageTop.classList.add('card-img-top')
+
+            let cardBody = document.createElement('div')
+            cardBody.classList.add('card-body')
+
+            let cardTitle = document.createElement('h5')
+            cardTitle.classList.add('card-title')
+
+            let cardTitleStr = document.createTextNode(book.title)
+            let cardText = document.createElement('p')
+            cardText.classList.add('card-text')
+
+            let cardTextStr = document.createTextNode(book.description)
+
+            let cardButton = document.createElement('button')
+            cardButton.classList.add('btn')
+            cardButton.classList.add('btn-primary')
+            cardButton.setAttribute('data-id', book.id)
+            
+            cardButton.getAttribute('data-id')
+
+            let cardButtonStr = document.createTextNode('Add To Cart')
+            cardButton.appendChild(cardButtonStr)
+
+            cardTitle.appendChild(cardTitleStr)
+            cardText.appendChild(cardTextStr)
+
+            cardBody.appendChild(cardTitle)
+            cardBody.appendChild(cardText)
+            cardBody.appendChild(cardButton)
+
+            card.appendChild(cardImageTop)
+            card.appendChild(cardBody)
+
+            document.getElementById('col1').appendChild(card)
+        }
+
+        function init() {
+            let booksJsonStr = window.sessionStorage.getItem('books')
+            if (booksJsonStr != null) {
+                books = JSON.parse(booksJsonStr)
+            } else {
+                books.push(
+                    {
+                        "id": 1,
+                        "title": "1984",
+                        "author": "George Orwell",
+                        "price": 180,
+                        "image": '1984.jpg',
+                        "description": "Among the seminal texts of the 20th century, Nineteen Eighty-Four is a rare work that grows more haunting as its futuristic purgatory becomes more real. Published in 1949, the book offers political satirist George Orwell's nightmarish vision of a totalitarian, bureaucratic world and one poor stiff's attempt to find individuality. The brilliance of the novel is Orwell's prescience of modern life—the ubiquity of television, the distortion of the language—and his ability to construct such a thorough version of hell. Required reading for students since it was published, it ranks among the most terrifying novels ever written."
+                    }
+                )
+                window.sessionStorage.setItem('books', JSON.stringify(books))
+            }
+
+        }
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

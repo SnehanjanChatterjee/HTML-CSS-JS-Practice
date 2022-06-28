@@ -1,0 +1,72 @@
+body {
+    background-color: #f2f2f2;
+}
+.container {
+    width: 70%;
+    margin-top: 10px;
+}
+.header {
+    padding-top: 10px;
+    background-color: #ffffff;
+    border: 1px solid #808080;
+    border-radius: 7px;
+}
+.BMS_Logo {
+    float: left;
+    padding: 0.5px 0px 0px 10px;
+}
+.header-text {
+    float: left;
+    padding: 10px 0px 20px 0.5px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #e60000;
+}
+
+li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+
+li:last-child {
+    border-right: none;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #e60000;
+}
+.clear {
+    clear: both;
+}
+
+.no-padding {
+    padding: 0;
+}
+.right-border {
+    border-right: 1px solid lightgrey;
+}
+.top-margin {
+    margin-top: 20px;
+}
+.help {
+    padding: 10px 10px 20px 10px;
+    background-color: ##e6e6e6;
+    border: 1px solid #808080;
+    border-radius: 7px;
+}

@@ -1,0 +1,45 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Playfair Display', serif;
+}
+.shift-row-middle {
+    width: 80%;
+    margin: auto;
+}
+.card-image {
+    height: 200px;
+}
+.card-style {
+    background-color: black;
+}
+.driv-aca-custom {
+    width: 77%;
+    margin: auto;
+    border-color: white;
+}
+.pd-top {
+    padding-top: 30px;
+}
+.custom-btn {
+    background-color: red;
+    color: white;
+    border-radius: 0px;
+}
+button:hover {
+    background-color: red;
+    color: white;
+    box-shadow: 0 0 30px red;
+}
+.footer-links { 
+    color: gray; 
+}
+.footer-links:hover { 
+    color: red; 
+}
+.footer-links-2 { 
+    color: white; 
+}
+.footer-links-2:hover { 
+    color: red; 
+}

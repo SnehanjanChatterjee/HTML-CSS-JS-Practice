@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://codyhouse.co/gem/add-to-cart-interaction -->
+<html lang="en" class=" js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--<base href="https://codyhouse.co/">--><base href=".">
+<title>Add to Cart Interaction in CSS and JavaScript | CodyHouse</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" itemprop="description" content="A floating cart that slides in when the user decides to buy an item.">
+<meta name="keywords" itemprop="keywords" content="ecommerce, checkout, cart, html, css, javascript, framework">
+<link rel="canonical" href="https://codyhouse.co/gem/add-to-cart-interaction">
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://codyhouse.co/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://codyhouse.co/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://codyhouse.co/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="https://codyhouse.co/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="https://codyhouse.co/assets/favicon/safari-pinned-tab.svg" color="#fc4348">
+<meta name="msapplication-TileColor" content="#161f28">
+<meta name="theme-color" content="#ffffff">
+
+
+<meta property="og:url" content="https://codyhouse.co/gem/add-to-cart-interaction">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Add to Cart Interaction in CSS and JavaScript | CodyHouse">
+<meta property="og:description" content="A floating cart that slides in when the user decides to buy an item.">
+<meta property="og:image" content="https://codyhouse.co/assets/img/gems/hero-sharing/add-to-cart-interaction-featured.png">
+<meta property="og:site_name" content="CodyHouse">
+
+<script async="" src="./Add to Cart Interaction in CSS and JavaScript _ CodyHouse_files/analytics.js.download"></script><script>document.getElementsByTagName("html")[0].className += " js";</script>
+<script>
+    if('CSS' in window && CSS.supports('color', 'var(--color-var)')) {
+      document.write('<link rel="stylesheet" href="assets/css/style.css?v=64">'); // ver=x
+    } else {
+      document.write('<link rel="stylesheet" href="assets/css/style-fallback.css">');
+    }
+  </script><link rel="stylesheet" href="./Add to Cart Interaction in CSS and JavaScript _ CodyHouse_files/style.css">
+<noscript>
+    <link rel="stylesheet" href="assets/css/style-fallback.css">
+  </noscript>
+
+</head>
+<body class="user--not-logged-in" data-theme="default" data-gr-c-s-loaded="true">
+<div class="position-relative">
+<div class="pre-header">
+
+<a href="https://codyhouse.co/sign-up">
+<div class="container max-width-lg flex justify-center">
+<div class="pre-header__msg text-sm flex flex-center">
+<p>🎉 <strong>Black Friday deal!</strong> 25% off your first year of CodyHouse Pro →</p>
+</div>
+</div>
+</a>
+</div> <header class="main-header js-main-header main-header--position-absolute" data-theme="dark">
+<div class="main-header__container container max-width-xl">
+<div class="flex items-center">
+<a href="https://codyhouse.co/" class="logo" aria-label="Go to homepage">
+<svg aria-hidden="true" viewBox="0 0 40 40"><title>CodyHouse Logo</title><path d="M40,22V18H33.652a17.844,17.844,0,0,0-.38-2.4A16.906,16.906,0,0,0,37,5H33a12.906,12.906,0,0,1-1.565,6.177,11.462,11.462,0,0,0-4.83-4.195,6.869,6.869,0,0,0-13.21,0,11.471,11.471,0,0,0-4.831,4.195A12.917,12.917,0,0,1,7,5H3A16.906,16.906,0,0,0,6.728,15.6a17.844,17.844,0,0,0-.38,2.4H0v4H6.408a18.253,18.253,0,0,0,.466,2.209A16.923,16.923,0,0,0,3,35H7a12.914,12.914,0,0,1,1.641-6.306C11.243,33.741,15.62,38,20,38s8.757-4.259,11.359-9.306A12.914,12.914,0,0,1,33,35h4a16.923,16.923,0,0,0-3.874-10.791A18.253,18.253,0,0,0,33.592,22ZM11,17a3,3,0,1,1,3,3A3,3,0,0,1,11,17Zm9,13a4,4,0,1,1,4-4A4,4,0,0,1,20,30Zm6-10a3,3,0,1,1,3-3A3,3,0,0,1,26,20Z"></path></svg>
+</a>
+</div>
+<div class="main-nav js-main-nav">
+<button class="main-nav__trigger js-trigger margin-left-sm"><i>Menu</i><em aria-hidden="true">Close</em></button>
+<nav class="main-nav__list js-nav">
+<ul>
+<li class="main-nav__label">#menu</li>
+<li><a href="https://codyhouse.co/ds/components">UI Framework</a></li>
+<li><a href="https://codyhouse.co/library" class="">Experiments</a></li>
+<li class="main-nav__label">#account</li>
+<li aria-hidden="true" class="main-nav__separator"></li>
+<li data-display="notLoggedIn">
+<a href="https://codyhouse.co/log-in">
+<span class="inline-flex items-center">
+<span>Login</span>
+<svg aria-hidden="true" class="icon margin-left-xxs" viewBox="0 0 16 16"><g><circle cx="8" cy="5" r="3"></circle><path d="M8 9a5 5 0 0 0-5 5h10a5 5 0 0 0-5-5z"></path></g></svg>
+</span>
+</a>
+</li>
+<li data-display="loggedIn">
+<a class="main-nav__account-btn js-main-nav__account" href="https://codyhouse.co/account/account-settings">
+<span class="inline-flex items-center">
+<span>Account</span>
+<svg aria-hidden="true" class="icon margin-left-xxs" viewBox="0 0 16 16"><polygon points="3,5 8,11 13,5 "></polygon></svg>
+</span>
+</a>
+<ul class="main-nav__menu js-main-nav__menu">
+<li><a href="https://codyhouse.co/account/account-settings">Account settings</a></li>
+<li><a href="https://codyhouse.co/ds/all-projects">Projects</a></li>
+<li><a href="https://codyhouse.co/log-out">Logout</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</header>
+</div><main class="js-highlight">
+<div class="gem-intro" style="background-color: #2b3e51">
+<figure class="gem-intro__img">
+<div class="gem-intro__img-wrapper">
+<img src="./Add to Cart Interaction in CSS and JavaScript _ CodyHouse_files/add-to-cart-interaction-featured.svg" alt="Add To Cart Interaction">
+</div>
+</figure>
+</div> <div class="margin-top-md margin-bottom-xl">
+<article class="article article--gem">
+<div class="text-component container max-width-sm">
+<h1>Add To Cart Interaction</h1>
+<p class="article-description">A floating cart that slides in when the user decides to buy an item.</p>
+</div>
+<div class="gem-divider">
+<div class="gem-divider__cta margin-bottom-lg container max-width-sm">
+<span aria-hidden="true" class="gem-divider__hr"></span>
+<a class="btn btn--lg btn--accent" href="https://codyhouse.co/demo/add-to-cart-interaction/index.html">View demo</a>
+<a class="btn btn--lg btn--contrast icon-text" href="https://github.com/CodyHouse/add-to-cart-interaction" target="_blank" rel="noopener">
+<svg aria-hidden="true" class="icon" viewBox="0 0 16 16"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M8,0.2c-4.4,0-8,3.6-8,8c0,3.5,2.3,6.5,5.5,7.6 C5.9,15.9,6,15.6,6,15.4c0-0.2,0-0.7,0-1.4C3.8,14.5,3.3,13,3.3,13c-0.4-0.9-0.9-1.2-0.9-1.2c-0.7-0.5,0.1-0.5,0.1-0.5 c0.8,0.1,1.2,0.8,1.2,0.8C4.4,13.4,5.6,13,6,12.8c0.1-0.5,0.3-0.9,0.5-1.1c-1.8-0.2-3.6-0.9-3.6-4c0-0.9,0.3-1.6,0.8-2.1 c-0.1-0.2-0.4-1,0.1-2.1c0,0,0.7-0.2,2.2,0.8c0.6-0.2,1.3-0.3,2-0.3c0.7,0,1.4,0.1,2,0.3c1.5-1,2.2-0.8,2.2-0.8 c0.4,1.1,0.2,1.9,0.1,2.1c0.5,0.6,0.8,1.3,0.8,2.1c0,3.1-1.9,3.7-3.7,3.9C9.7,12,10,12.5,10,13.2c0,1.1,0,1.9,0,2.2 c0,0.2,0.1,0.5,0.6,0.4c3.2-1.1,5.5-4.1,5.5-7.6C16,3.8,12.4,0.2,8,0.2z"></path></g></svg>
+<span>Download</span>
+</a>
+<span aria-hidden="true" class="gem-divider__hr"></span>
+</div>
+
+
+
+<div class="container max-width-adaptive-sm margin-bottom-lg">
+<a href="https://codyhouse.co/ds/components" class="tutorial-avd">
+📦 <span class="text-underline">Browse our library of 230 accessible web components</span>
+</a>
+</div>
+</div> 
+<div class="text-component container max-width-sm">
+<p>We’re used to different patterns when it comes to the “add to cart” process. The basic idea behind this pattern is to notify the user that an item has been added to the cart, and provide them with a link to proceed to the checkout.</p>
+<p>We’ve been experimenting with the idea of hiding the cart by default, and showing it when the user clicks the “add to cart” button. This way the user can either check the cart and proceed to checkout&nbsp;or continue shopping. The cart will stick to the bottom of the page, accessible at any time.</p>
+<ul>
+<li>⭐️ Icons: <a href="https://nucleoapp.com/?ref=2214">Nucleo, icon organizer &amp; icon library</a></li>
+</ul>
+<div class="info-msg text-component__block">
+<p class="text-center padding-sm">👉 <strong>Important:</strong> this experiment is built using the <a href="https://codyhouse.co/ds/docs/framework">CodyHouse Framework</a>.</p>
+</div>
+<h2>Creating the structure</h2>
+<p>The cart <strong>HTML structure</strong> is composed of two main elements: a <code>.cd-cart__trigger</code>&nbsp;for the cart trigger and the cart total, and a <code>.cd-cart__content</code> for&nbsp;the cart content.</p>
+<pre><code class="html xml hljs js-hljs"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart cd-cart--empty js-cd-cart"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#0"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__trigger text-replace"</span>&gt;</span>
+    Cart
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__count"</span>&gt;</span> <span class="hljs-comment">&lt;!-- cart items count --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span> <span class="hljs-comment">&lt;!-- .cd-cart__count --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__content"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__layout"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__header"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Cart<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__undo"</span>&gt;</span>Item removed. <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#0"</span>&gt;</span>Undo<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+      
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__body"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+          <span class="hljs-comment">&lt;!-- products added to the cart will be inserted here using JavaScript --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">footer</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__footer"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#0"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__checkout"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>Checkout - $<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon--sm"</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"0 0 24 24"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">g</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">"none"</span> <span class="hljs-attr">stroke</span>=<span class="hljs-string">"currentColor"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">line</span> <span class="hljs-attr">stroke-width</span>=<span class="hljs-string">"2"</span> <span class="hljs-attr">stroke-linecap</span>=<span class="hljs-string">"round"</span> <span class="hljs-attr">stroke-linejoin</span>=<span class="hljs-string">"round"</span> <span class="hljs-attr">x1</span>=<span class="hljs-string">"3"</span> <span class="hljs-attr">y1</span>=<span class="hljs-string">"12"</span> <span class="hljs-attr">x2</span>=<span class="hljs-string">"21"</span> <span class="hljs-attr">y2</span>=<span class="hljs-string">"12"</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">polyline</span> <span class="hljs-attr">stroke-width</span>=<span class="hljs-string">"2"</span> <span class="hljs-attr">stroke-linecap</span>=<span class="hljs-string">"round"</span> <span class="hljs-attr">stroke-linejoin</span>=<span class="hljs-string">"round"</span> <span class="hljs-attr">points</span>=<span class="hljs-string">"15,6 21,12 15,18 "</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">g</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> <span class="hljs-comment">&lt;!-- .cd-cart__content --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> <span class="hljs-comment">&lt;!-- cd-cart --&gt;</span></code></pre>
+<p>The unordered list inside the&nbsp;<code>.cd-cart__body</code> element is empty by default (empty cart); when a product is added to the cart, a list item element is inserted using JavaScript.</p>
+<pre><code class="html xml hljs js-hljs"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__body"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__product"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__image"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#0"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"assets/img/product-preview.png"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"placeholder"</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__details"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"truncate"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#0"</span>&gt;</span>Product Name<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__price"</span>&gt;</span>$25.99<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__actions"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#0"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__delete-item"</span>&gt;</span>Delete<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__quantity"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"cd-product-productId"</span>&gt;</span>Qty<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cd-cart__select"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"reset"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"cd-product-productId"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"quantity"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"2"</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-comment">&lt;!-- ... --&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+
+              <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"0 0 12 12"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">polyline</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">"none"</span> <span class="hljs-attr">stroke</span>=<span class="hljs-string">"currentColor"</span> <span class="hljs-attr">points</span>=<span class="hljs-string">"2,4 6,8 10,4 "</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- other products added to the cart --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<h2>Adding style</h2>
+<p>The <code>.cd-cart__content</code>&nbsp;and <code>.cd-cart__trigger</code> elements are both in position&nbsp;fixed and moved outside the viewport (using a <code>translateY</code>). When an item is added to the cart, the <code>.cd-cart--empty</code>&nbsp;class is removed from the <code>.cd-cart</code> element and the cart is shown.</p>
+<pre><code class="scss hljs js-hljs"><span class="hljs-selector-class">.cd-cart__trigger</span>,
+<span class="hljs-selector-class">.cd-cart__content</span> {
+  <span class="hljs-attribute">position</span>: fixed;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">5%</span>;
+  <span class="hljs-attribute">transition</span>: transform .<span class="hljs-number">2s</span>;
+}
+
+<span class="hljs-selector-class">.cd-cart--empty</span> <span class="hljs-selector-class">.cd-cart__trigger</span>,
+<span class="hljs-selector-class">.cd-cart--empty</span> <span class="hljs-selector-class">.cd-cart__content</span> { <span class="hljs-comment">// hide cart</span>
+  <span class="hljs-attribute">transform</span>: translateY(<span class="hljs-number">150px</span>);
+}</code></pre>
+<p>As for the cart animation: we assign&nbsp;a fixed height and width to the&nbsp;<code>div.cd-cart__layout</code>&nbsp;element (the same of the <code>a.cd-cart__trigger</code>); when the cart&nbsp;is open, we use the&nbsp;<code>.cd-cart--open</code>&nbsp;class to animate its height and&nbsp;width&nbsp;while revealing the cart content.</p>
+<pre><code class="scss hljs js-hljs"><span class="hljs-selector-class">.cd-cart__layout</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">72px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">72px</span>;
+  <span class="hljs-attribute">border-radius</span>: var(--radius);
+  <span class="hljs-attribute">transition</span>: height .<span class="hljs-number">4s</span> .<span class="hljs-number">1s</span>, width  .<span class="hljs-number">4s</span> .<span class="hljs-number">1s</span>, box-shadow .<span class="hljs-number">3s</span>;
+  <span class="hljs-attribute">transition-timing-function</span>: cubic-bezier(.<span class="hljs-number">67</span>,.<span class="hljs-number">17</span>,.<span class="hljs-number">32</span>,.<span class="hljs-number">95</span>);
+  <span class="hljs-attribute">background</span>: var(--cd-color-<span class="hljs-number">3</span>);
+  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">4px</span> <span class="hljs-number">30px</span> rgba(<span class="hljs-number">#000</span>, .<span class="hljs-number">17</span>);
+}
+
+<span class="hljs-selector-class">.cd-cart--open</span> <span class="hljs-selector-class">.cd-cart__layout</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">transition-delay</span>: <span class="hljs-number">0s</span>;
+}</code></pre>
+<p>The <code>.cd-cart__product--deleted</code>&nbsp;class is used to remove an item from the cart:&nbsp;the deleted element has an absolute position, and the&nbsp;<code>cd-item-slide-out</code> animation is used to create the slide-out effect.</p>
+<pre><code class="scss hljs js-hljs"><span class="hljs-selector-class">.cd-cart__product--deleted</span> { <span class="hljs-comment">// this class is added to an item when it is removed form the cart</span>
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>; 
+  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">animation</span>: cd-item-slide-out .<span class="hljs-number">3s</span> forwards;
+}
+
+@keyframes cd-item-slide-out {
+  0% {
+    <span class="hljs-attribute">transform</span>: translateX(<span class="hljs-number">0</span>);
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+  }
+  100% {
+    <span class="hljs-attribute">transform</span>: translateX(<span class="hljs-number">80px</span>);
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+  }
+}</code></pre>
+<p>If the user clicks on 'Undo', the <code>.cd-cart__product--deleted</code>&nbsp;class is removed and the element is reinserted in the list.</p>
+<h2>Events handling</h2>
+<p>When the user clicks the <code>.js-cd-add-to-cart</code>&nbsp;button, the&nbsp;<code>addProduct()</code> function is used to insert a new list item inside the <code>.cd-cart__body &gt; ul</code> element. The product details used are placeholders, which should be replaced by the real product info:</p>
+<pre><code class="javascript hljs js-hljs"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addProduct</span>(<span class="hljs-params">target</span>) </span>{
+  <span class="hljs-comment">// this is just a product placeholder</span>
+  <span class="hljs-keyword">var</span> productAdded = <span class="hljs-string">'&lt;li class="cd-cart__product"&gt;&lt;div class="cd-cart__image"&gt;&lt;a href="#0"&gt;&lt;img src="assets/img/product-preview.png" alt="placeholder"&gt;&lt;/a&gt;&lt;/div&gt;&lt;div class="cd-cart__details"&gt;&lt;h3 class="truncate"&gt;&lt;a href="#0"&gt;Product Name&lt;/a&gt;&lt;/h3&gt;&lt;span class="cd-cart__price"&gt;$25.99&lt;/span&gt;&lt;div class="cd-cart__actions"&gt;&lt;a href="#0" class="cd-cart__delete-item"&gt;Delete&lt;/a&gt;&lt;div class="cd-cart__quantity"&gt;&lt;label for="cd-product-'</span>+ productId +<span class="hljs-string">'"&gt;Qty&lt;/label&gt;&lt;span class="cd-cart__select"&gt;&lt;select class="reset" id="cd-product-'</span>+ productId +<span class="hljs-string">'" name="quantity"&gt;&lt;option value="1"&gt;1&lt;/option&gt;&lt;option value="2"&gt;2&lt;/option&gt;&lt;option value="3"&gt;3&lt;/option&gt;&lt;option value="4"&gt;4&lt;/option&gt;&lt;option value="5"&gt;5&lt;/option&gt;&lt;option value="6"&gt;6&lt;/option&gt;&lt;option value="7"&gt;7&lt;/option&gt;&lt;option value="8"&gt;8&lt;/option&gt;&lt;option value="9"&gt;9&lt;/option&gt;&lt;/select&gt;&lt;svg class="icon" viewBox="0 0 12 12"&gt;&lt;polyline fill="none" stroke="currentColor" points="2,4 6,8 10,4 "/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;'</span>;
+  cartList.insertAdjacentHTML(<span class="hljs-string">'beforeend'</span>, productAdded);
+};</code></pre>
+<p>Additional functions, like the&nbsp;<code>updateCartCount()</code> or&nbsp;<code>updateCartTotal()</code>, have been defined to update the cart count and total when new products are added/deleted or when the quantity of a product added to the cart is changed.</p> </div>
+</article>
+</div>
+<div class="cta-blocks-socials margin-bottom-xl">
+<div class="cta-blocks-socials__container container max-width-sm">
+<div class="cta-blocks-socials__twitter js-animate-hover" data-duration="600">
+<a href="https://twitter.com/CodyWebHouse" aria-label="Follow us on Twitter">
+<em aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<g id="i-twitter-body"><path d="M42.3,10.7a9.65,9.65,0,0,0,4.3-5.4,21.673,21.673,0,0,1-6.3,2.4,9.968,9.968,0,0,0-7.2-3.1,9.816,9.816,0,0,0-9.8,9.8,7.8,7.8,0,0,0,.3,2.2c-1.819,7.994-4.475,13.556-9.1,18.3A20.007,20.007,0,0,1,2.3,39.1,16.95,16.95,0,0,1,0,39a27.827,27.827,0,0,0,15.1,4.4c18.1,0,28-15,28-28V14.1a17.958,17.958,0,0,0,4.9-5A21.919,21.919,0,0,1,42.3,10.7Z" fill="#fff"></path></g>
+<g id="i-twitter-wing"><path d="M23.6,16.6A28.018,28.018,0,0,1,3.3,6.3,10.234,10.234,0,0,0,2,11.2a9.793,9.793,0,0,0,4.4,8.2,11.571,11.571,0,0,1-4.5-1.2v.1A9.88,9.88,0,0,0,9.8,28a10.9,10.9,0,0,1-2.6.3,12.252,12.252,0,0,1-1.9-.2,9.79,9.79,0,0,0,9.2,6.8A28.008,28.008,0,0,0,23.6,16.6Z" fill="#fff"></path></g>
+</svg>
+<p>Follow us</p>
+</em>
+</a>
+</div>
+<div class="cta-blocks-socials__facebook js-animate-hover" data-duration="400">
+<a href="https://www.facebook.com/CodyWebHouse" aria-label="Join us on Facebook">
+<em aria-hidden="true">
+<svg class="cta-animation-facebook" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 48 48" width="48" height="48">
+<g>
+<path d="M46,0H2A2,2,0,0,0,0,2V46a2,2,0,0,0,2,2H46a2,2,0,0,0,2-2V2A2,2,0,0,0,46,0Z" fill="#fff"></path>
+<path class="cta-animation-facebook__f cta-animation-facebook__f--1" d="M25.638,48V29.412H19.383V22.168h6.255V16.825c0-6.2,3.787-9.575,9.318-9.575a51.383,51.383,0,0,1,5.589.285v6.479l-3.836,0c-3.007,0-3.59,1.429-3.59,3.527v4.625h7.174l-.934,7.244h-6.24V48Z" fill="#415893"></path>
+<path class="cta-animation-facebook__f cta-animation-facebook__f--2" d="M25.638,48V29.412H19.383V22.168h6.255V16.825c0-6.2,3.787-9.575,9.318-9.575a51.383,51.383,0,0,1,5.589.285v6.479l-3.836,0c-3.007,0-3.59,1.429-3.59,3.527v4.625h7.174l-.934,7.244h-6.24V48Z" fill="#415893"></path>
+</g>
+</svg>
+<p>Join us</p>
+</em>
+</a>
+</div>
+<div class="cta-blocks-socials__main js-animate-hover" data-duration="400">
+<a href="https://codyhouse.co/ds/components" aria-label="Browse our web components">
+<div>
+<h3>📦 Components</h3>
+<p>Browse our library of customizable <span>web components</span></p>
+<i aria-hidden="true">
+<b class="cta-animation-components">
+<b class="cta-animation-components__rect cta-animation-components__rect--1"></b>
+<b class="cta-animation-components__rect cta-animation-components__rect--2"></b>
+<b class="cta-animation-components__rect cta-animation-components__rect--3"></b>
+</b>
+</i>
+</div>
+</a>
+</div>
+</div>
+</div> <div class="newsletter text-center js-newsletter margin-bottom-xl">
+<div class="container">
+<div class="text-component margin-bottom-md">
+<h1>Join our newsletter</h1>
+
+<p>✨ Web design nuggets delivered to your inbox once a month.</p>
+</div>
+<form class="newsletter__form max-width-xxs margin-x-auto js-newsletter-form">
+<input type="email" placeholder="Email" name="email" class="form-control width-100% js-email">
+<button class="btn btn--subtle btn--preserve-width newsletter__btn js-btn">
+<span class="btn__content-a">Sign up</span>
+<span class="btn__content-b" aria-hidden="true">
+<svg class="icon icon--md icon--is-spinning" viewBox="0 0 32 32"><path d="M16,32A16,16,0,1,1,32,16,16.019,16.019,0,0,1,16,32ZM16,4A12,12,0,1,0,28,16,12.013,12.013,0,0,0,16,4Z" fill="currentColor" opacity="0.4"></path><path d="M32,16H28A12.013,12.013,0,0,0,16,4V0A16.019,16.019,0,0,1,32,16Z" fill="currentColor"></path></svg>
+</span>
+<span class="btn__content-c">
+<svg class="icon icon--md" viewBox="0 0 32 32"><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" points="2,15 12,25 30,7 " stroke-linejoin="round"></polyline></svg>
+</span>
+</button>
+</form>
+<p class="newsletter__response newsletter__response--is-hidden js-response-message"></p>
+</div>
+</div></main>
+<div class="notification js-privacy-policy-alert js-notification" role="alert">
+<div class="notification__content">
+<div class="text-component">
+<p>📢 We use cookies to give you the best possible website experience. By using CodyHouse, you agree to our <a href="https://codyhouse.co/privacy-policy">Privacy Policy</a>.</p>
+</div>
+<button class="notification__btn js-notification__close">
+<svg class="icon" viewBox="0 0 16 16"><g><title>Close Notification</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 2l12 12"></path><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 2L2 14"></path></g></svg>
+</button>
+</div>
+</div>
+<div class="flash-message js-flash-message js-flash-message--duplicate-prj" role="status" data-message-trigger="" data-duration="3000">
+<p>✅ Project duplicated</p>
+</div><div class="flash-message js-flash-message js-flash-message--create-prj" role="status" data-message-trigger="" data-duration="3000">
+<p>✅ Project created</p>
+</div>
+<footer class="main-footer ">
+<div class="container max-width-xl">
+<div class="main-footer__content">
+<div class="footer-nav">
+<nav>
+<h4 class="footer-nav__title">UI Framework</h4>
+<ul>
+<li><a href="https://codyhouse.co/ds/get-started">Documentation</a></li>
+<li><a href="https://codyhouse.co/ds/docs/framework">Framework</a></li>
+<li><a href="https://codyhouse.co/ds/components">Components</a></li>
+<li><a href="https://codyhouse.co/ds/globals">Globals</a></li>
+<li><a href="https://codyhouse.co/tutorials">Tutorials</a></li>
+<li><a href="https://codyhouse.co/codyhouse-pro">CodyHouse Pro</a></li>
+<li><a href="https://codyhouse.nolt.io/">Suggest Component</a></li>
+</ul>
+</nav>
+<nav>
+<h4 class="footer-nav__title">Experiments</h4>
+<ul>
+<li><a href="https://codyhouse.co/library">All experiments</a></li>
+<li><a href="https://codyhouse.co/library/effects">Effects</a></li>
+<li><a href="https://codyhouse.co/library/navigations">Navigations</a></li>
+<li><a href="https://codyhouse.co/library/templates">Templates</a></li>
+<li><a href="https://codyhouse.co/library/ux-patterns">UX patterns</a></li>
+</ul>
+</nav>
+<nav>
+<h4 class="footer-nav__title">Support</h4>
+<ul>
+<li><a href="https://codyhouse.co/faq">Questions &amp; Answers</a></li>
+<li><a href="https://codyhouse.co/contact">Contact</a></li>
+<li><a href="https://codyhouse.co/license">License</a></li>
+<li><a href="https://codyhouse.co/terms">Terms</a></li>
+<li><a href="https://codyhouse.co/privacy-policy">Privacy policy</a></li>
+</ul>
+</nav>
+<nav>
+<h4 class="footer-nav__title">Socials</h4>
+<ul>
+<li>
+<a href="https://codyhouse.co/blog" class="icon-text footer-nav__item-social">
+<svg class="icon" aria-hidden="true" viewBox="0 0 16 16" width="16" height="16"><g><path d="M14,0H2C1.4,0,1,0.4,1,1v14c0,0.6,0.4,1,1,1h12c0.6,0,1-0.4,1-1V1C15,0.4,14.6,0,14,0z M13,14H3V2h10V14z"></path> <rect data-color="color-2" x="4" y="3" width="4" height="4"></rect> <rect data-color="color-2" x="9" y="4" width="3" height="1"></rect> <rect data-color="color-2" x="9" y="6" width="3" height="1"></rect> <rect data-color="color-2" x="4" y="8" width="8" height="1"></rect> <rect data-color="color-2" x="4" y="10" width="8" height="1"></rect> <rect data-color="color-2" x="4" y="12" width="5" height="1"></rect></g></svg>
+<span>Blog</span>
+</a>
+</li>
+<li>
+<a href="https://twitter.com/CodyWebHouse" class="icon-text footer-nav__item-social twitter">
+<svg class="icon" aria-hidden="true" viewBox="0 0 16 16" width="16" height="16"><title>logo twitter</title><g><path d="M16,3c-0.6,0.3-1.2,0.4-1.9,0.5c0.7-0.4,1.2-1,1.4-1.8c-0.6,0.4-1.3,0.6-2.1,0.8c-0.6-0.6-1.5-1-2.4-1 C9.3,1.5,7.8,3,7.8,4.8c0,0.3,0,0.5,0.1,0.7C5.2,5.4,2.7,4.1,1.1,2.1c-0.3,0.5-0.4,1-0.4,1.7c0,1.1,0.6,2.1,1.5,2.7 c-0.5,0-1-0.2-1.5-0.4c0,0,0,0,0,0c0,1.6,1.1,2.9,2.6,3.2C3,9.4,2.7,9.4,2.4,9.4c-0.2,0-0.4,0-0.6-0.1c0.4,1.3,1.6,2.3,3.1,2.3 c-1.1,0.9-2.5,1.4-4.1,1.4c-0.3,0-0.5,0-0.8,0c1.5,0.9,3.2,1.5,5,1.5c6,0,9.3-5,9.3-9.3c0-0.1,0-0.3,0-0.4C15,4.3,15.6,3.7,16,3z"></path></g></svg>
+<span>Twitter</span>
+</a>
+</li>
+<li>
+<a href="https://www.instagram.com/codyhouse.css/" class="icon-text footer-nav__item-social instagram">
+<svg class="icon" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><g><circle cx="12.145" cy="3.892" r="0.96"></circle><path data-color="color-2" d="M8,12c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S10.206,12,8,12z M8,6C6.897,6,6,6.897,6,8 s0.897,2,2,2s2-0.897,2-2S9.103,6,8,6z"></path><path d="M12,16H4c-2.056,0-4-1.944-4-4V4c0-2.056,1.944-4,4-4h8c2.056,0,4,1.944,4,4v8C16,14.056,14.056,16,12,16z M4,2C3.065,2,2,3.065,2,4v8c0,0.953,1.047,2,2,2h8c0.935,0,2-1.065,2-2V4c0-0.935-1.065-2-2-2H4z"></path></g></svg>
+<span>Instagram</span>
+</a>
+</li>
+<li>
+<a href="https://www.facebook.com/CodyWebHouse" class="icon-text footer-nav__item-social facebook">
+<svg class="icon" aria-hidden="true" viewBox="0 0 16 16" width="16" height="16"><title>logo facebook</title><g><path d="M15.3,0H0.7C0.3,0,0,0.3,0,0.7v14.7C0,15.7,0.3,16,0.7,16H8v-5H6V8h2V6c0-2.1,1.2-3,3-3 c0.9,0,1.8,0,2,0v3h-1c-0.6,0-1,0.4-1,1v1h2.6L13,11h-2v5h4.3c0.4,0,0.7-0.3,0.7-0.7V0.7C16,0.3,15.7,0,15.3,0z"></path></g></svg>
+<span>Facebook</span>
+</a>
+</li>
+<li>
+<a href="https://www.youtube.com/channel/UCQhxjJcgCwDW_2JqlDBsWtA" class="icon-text footer-nav__item-social youtube">
+<svg class="icon" aria-hidden="true" viewBox="0 0 16 16" width="16" height="16"><title>logo youtube</title><g><path d="M15.8,4.8c-0.2-1.3-0.8-2.2-2.2-2.4C11.4,2,8,2,8,2S4.6,2,2.4,2.4C1,2.6,0.3,3.5,0.2,4.8C0,6.1,0,8,0,8 s0,1.9,0.2,3.2c0.2,1.3,0.8,2.2,2.2,2.4C4.6,14,8,14,8,14s3.4,0,5.6-0.4c1.4-0.3,2-1.1,2.2-2.4C16,9.9,16,8,16,8S16,6.1,15.8,4.8z M6,11V5l5,3L6,11z"></path></g></svg>
+<span>Youtube</span>
+</a>
+</li>
+
+<li>
+<a href="https://codyhouse.co/newsletter" class="icon-text footer-nav__item-social">
+<svg class="icon" aria-hidden="true" viewBox="0 0 16 16" width="16" height="16"><title>email</title><g><path data-color="color-2" d="M14,6.883V13H2V6.82L0,5.695V14c0,0.553,0.448,1,1,1h14c0.552,0,1-0.447,1-1V5.783L14,6.883z"></path> <path d="M15,1H1C0.4,1,0,1.4,0,2v1.4l8,4.5l8-4.4V2C16,1.4,15.6,1,15,1z"></path> </g></svg>
+<span>Newsletter</span>
+</a>
+</li>
+<li>
+<a href="http://feeds.feedburner.com/codyhouse/feeds" class="icon-text footer-nav__item-social">
+<svg class="icon" aria-hidden="true" viewBox="0 0 16 16" width="16" height="16"><title>logo-rss</title><g><circle cx="3" cy="13" r="2"></circle> <path d="M15,15h-2.7C12.3,8.8,7.2,3.7,1,3.7V1C8.7,1,15,7.3,15,15z"></path> <path d="M10.3,15H7.7c0-3.7-3-6.7-6.7-6.7V5.7C6.1,5.7,10.3,9.9,10.3,15z"></path></g></svg>
+<span>RSS</span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div class="footer-avd">
+<div class="footer-avd__label">Sponsored by</div>
+
+<div class="js-codefund-adv">
+<div id="codefund" class="footer-avd__wrapper"></div>
+<script src="./Add to Cart Interaction in CSS and JavaScript _ CodyHouse_files/funder.js.download" async="async"></script>
+<script type="text/javascript" async="" src="./Add to Cart Interaction in CSS and JavaScript _ CodyHouse_files/funder.js.download"></script></div>
+
+</div>
+</div>
+<div class="padding-y-lg">
+<div class="text-sm flex flex-column flex-gap-md flex-row@md justify-between@md items-center@md">
+<p>©2014 - 2020 CodyHouse. A project by <a href="https://twitter.com/romano_cla" class="color-inherit">@romano_cla</a> and <a href="https://twitter.com/guerriero_se" class="color-inherit">@guerriero_se</a></p>
+<p class="flex">
+<button href="#0" class="reset main-footer__btn margin-right-xxs js-back-to-top back-to-top--is-visible">
+<svg aria-hidden="true" class="icon icon--xxs margin-right-xxs" viewBox="0 0 12 12"><g><path d="M6,0a6,6,0,1,0,6,6A6,6,0,0,0,6,0ZM3,7,6,3,9,7Z"></path></g></svg>
+<span>Back to top</span>
+</button>
+<button href="#0" class="reset main-footer__btn btn-states js-app-dark-mode">
+<svg aria-hidden="true" class="icon icon--xxs margin-right-xxs" viewBox="0 0 16 16"><g><path d="M6,0C2.5,0.9,0,4.1,0,7.9C0,12.4,3.6,16,8.1,16c3.8,0,6.9-2.5,7.9-6C9.9,11.7,4.3,6.1,6,0z"></path></g></svg>
+<span class="btn-states">
+<b class="btn__content-a">Enable</b><b class="btn__content-b">Disable</b> Dark Mode
+</span>
+</button>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<div class="modal js-modal " data-modal-trigger="modalProRequired">
+<div class="modal__content max-width-xs js-modal-content" role="alertdialog" tabindex="-1" aria-labelledby="modalTitlePro1" aria-describedby="modalDescriptionPro1">
+<header class="modal__header">
+<h3 class="modal__title text-truncate" id="modalTitlePro1">🚀 Upgrade to CodyHouse Pro</h3>
+<button class="modal__header-close-btn js-modal__close">
+<svg class="icon" viewBox="0 0 16 16"><title>Close modal window</title><g stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"><line x1="13.5" y1="2.5" x2="2.5" y2="13.5"></line><line x1="2.5" y1="2.5" x2="13.5" y2="13.5"></line></g></svg>
+</button>
+</header>
+<div class="modal__body">
+<div class="text-component">
+<ul>
+<li>✅ Unlimited CodyHouse projects</li>
+<li>✅ Unlock 81 pro components and counting</li>
+<li>✅ One-click project export</li>
+</ul>
+</div>
+<footer class="margin-top-md">
+<div class="flex flex-column flex-gap-sm flex-row@sm items-center@sm justify-end@sm">
+<a href="https://codyhouse.co/log-in" class="color-inherit margin-right-auto" data-display="notLoggedIn">Log in</a>
+<a href="https://codyhouse.co/codyhouse-pro" class="btn btn--subtle">Learn more</a>
+<a href="https://codyhouse.co/sign-up?become-pro" class="btn btn--primary">Go Pro - $89/year</a>
+</div>
+</footer>
+</div>
+</div>
+<button class="modal__close-btn js-modal__close">
+<svg class="icon" viewBox="0 0 16 16"><title>Close modal window</title><g stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"><line x1="13.5" y1="2.5" x2="2.5" y2="13.5" data-cap="butt"></line><line x1="2.5" y1="2.5" x2="13.5" y2="13.5" data-cap="butt"></line></g></svg>
+</button>
+</div><div class="flash-message js-flash-message flash-message--error js-flash-message--project-export" role="status" data-message-trigger="" data-duration="3000">
+<p>There was an error while trying to export your project. Please try again or <a href="https://codyhouse.co/contact">contact us</a></p>
+</div>
+<script>
+  var ROUTE    = 'gem_add-to-cart-interaction';
+  var AJAX_URL = 'post/';
+  const IS_LOGGED = '0';
+  const IS_FREE = '1';
+  var PROJECT = null;
+  const STRIPE_PB = 'pk_live_1JJgxoXnJdjpNbgxEEXlCqKb00HEdWbq1K';
+  var COMPNUM = '230';
+</script>
+<script src="./Add to Cart Interaction in CSS and JavaScript _ CodyHouse_files/saved_resource"></script>
+<script src="./Add to Cart Interaction in CSS and JavaScript _ CodyHouse_files/main.min.js.download"></script> 
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48014931-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script><script src="./Add to Cart Interaction in CSS and JavaScript _ CodyHouse_files/app-main.min.js.download"></script> 
+
+
+<iframe frameborder="0" allowtransparency="true" scrolling="no" name="__privateStripeMetricsController0" allowpaymentrequest="true" src="./Add to Cart Interaction in CSS and JavaScript _ CodyHouse_files/m-outer-a0f6c1465b8d9aab778cf2913d1d3c86.html" aria-hidden="true" tabindex="-1" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe></body></html>

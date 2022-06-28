@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function solve() {
+            var x = document.getElementById('NumberOne').value;
+            var y = document.getElementById('NumberTwo').value;
+            var i, out;
+            var text = "";
+            for (i = 1; i <= y; i++) {
+                out = parseInt(x) * i;
+                text += out + "<br>";
+            }
+            document.getElementById('banner').innerHTML = text;
+        }
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <label for="NumberOne" style="display: block;">NUMBER ONE</label>
+        <input type="text" id="NumberOne" name="NumberOne">
+        <label for="NumberTwo" style="display: block;">NUMBER TWO</label>
+        <input type="text" id="NumberTwo" name="NumberTwo" style="display: block;">
+
+        <button type="button" onclick="solve()">SOLVE</button>
+        <br>
+        <p id="banner"></p>
+    </form>
+</body>
+
+</html>

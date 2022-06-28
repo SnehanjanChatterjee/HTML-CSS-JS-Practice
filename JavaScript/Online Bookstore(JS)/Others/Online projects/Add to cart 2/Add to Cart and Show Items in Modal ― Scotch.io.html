@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<!-- saved from url=(0103)https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal -->
+<html lang="en" class="fontawesome-i2svg-active fontawesome-i2svg-complete"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Add to Cart and Show Items in Modal ― Scotch.io</title>
+
+<style type="text/css">svg:not(:root).svg-inline--fa {
+  overflow: visible;
+}
+
+.svg-inline--fa {
+  display: inline-block;
+  font-size: inherit;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.225em;
+}
+.svg-inline--fa.fa-w-1 {
+  width: 0.0625em;
+}
+.svg-inline--fa.fa-w-2 {
+  width: 0.125em;
+}
+.svg-inline--fa.fa-w-3 {
+  width: 0.1875em;
+}
+.svg-inline--fa.fa-w-4 {
+  width: 0.25em;
+}
+.svg-inline--fa.fa-w-5 {
+  width: 0.3125em;
+}
+.svg-inline--fa.fa-w-6 {
+  width: 0.375em;
+}
+.svg-inline--fa.fa-w-7 {
+  width: 0.4375em;
+}
+.svg-inline--fa.fa-w-8 {
+  width: 0.5em;
+}
+.svg-inline--fa.fa-w-9 {
+  width: 0.5625em;
+}
+.svg-inline--fa.fa-w-10 {
+  width: 0.625em;
+}
+.svg-inline--fa.fa-w-11 {
+  width: 0.6875em;
+}
+.svg-inline--fa.fa-w-12 {
+  width: 0.75em;
+}
+.svg-inline--fa.fa-w-13 {
+  width: 0.8125em;
+}
+.svg-inline--fa.fa-w-14 {
+  width: 0.875em;
+}
+.svg-inline--fa.fa-w-15 {
+  width: 0.9375em;
+}
+.svg-inline--fa.fa-w-16 {
+  width: 1em;
+}
+.svg-inline--fa.fa-w-17 {
+  width: 1.0625em;
+}
+.svg-inline--fa.fa-w-18 {
+  width: 1.125em;
+}
+.svg-inline--fa.fa-w-19 {
+  width: 1.1875em;
+}
+.svg-inline--fa.fa-w-20 {
+  width: 1.25em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-border {
+  height: 1.5em;
+}
+.svg-inline--fa.fa-li {
+  width: 2em;
+}
+.svg-inline--fa.fa-fw {
+  width: 1.25em;
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: #ff253a;
+  border-radius: 1em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #fff;
+  height: 1.5em;
+  line-height: 1;
+  max-width: 5em;
+  min-width: 1.5em;
+  overflow: hidden;
+  padding: 0.25em;
+  right: 0;
+  text-overflow: ellipsis;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: 0;
+  right: 0;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: 0;
+  left: 0;
+  right: auto;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  right: 0;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: 0;
+  right: auto;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+
+.fa-lg {
+  font-size: 1.3333333333em;
+  line-height: 0.75em;
+  vertical-align: -0.0667em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: 2.5em;
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: -2em;
+  position: absolute;
+  text-align: center;
+  width: 2em;
+  line-height: inherit;
+}
+
+.fa-border {
+  border: solid 0.08em #eee;
+  border-radius: 0.1em;
+  padding: 0.2em 0.25em 0.15em;
+}
+
+.fa-pull-left {
+  float: left;
+}
+
+.fa-pull-right {
+  float: right;
+}
+
+.fa.fa-pull-left,
+.fas.fa-pull-left,
+.far.fa-pull-left,
+.fal.fa-pull-left,
+.fab.fa-pull-left {
+  margin-right: 0.3em;
+}
+.fa.fa-pull-right,
+.fas.fa-pull-right,
+.far.fa-pull-right,
+.fal.fa-pull-right,
+.fab.fa-pull-right {
+  margin-left: 0.3em;
+}
+
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+          animation: fa-spin 2s infinite linear;
+}
+
+.fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
+          animation: fa-spin 1s infinite steps(8);
+}
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+  -webkit-transform: scale(-1, 1);
+          transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(1, -1);
+          transform: scale(1, -1);
+}
+
+.fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(-1, -1);
+          transform: scale(-1, -1);
+}
+
+:root .fa-rotate-90,
+:root .fa-rotate-180,
+:root .fa-rotate-270,
+:root .fa-flip-horizontal,
+:root .fa-flip-vertical,
+:root .fa-flip-both {
+  -webkit-filter: none;
+          filter: none;
+}
+
+.fa-stack {
+  display: inline-block;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: #fff;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}</style><link rel="apple-touch-icon" sizes="180x180" href="https://scotch.io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://scotch.io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://scotch.io/favicon-16x16.png">
+<link rel="manifest" href="https://scotch.io/manifest.json">
+<link rel="mask-icon" href="https://scotch.io/safari-pinned-tab.svg" color="#2e2e2e">
+<meta name="msapplication-TileColor" content="#2e2e2e">
+<meta name="theme-color" content="#333">
+<link rel="alternate" type="application/rss+xml" href="https://scotch.io/feed" title="Scotch.io RSS Feed">
+
+<meta name="author" content="Alex Sears">
+<link rel="canonical" href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal">
+
+<meta name="twitter:url" content="http://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal">
+<meta name="twitter:title" content="Add to Cart and Show Items in Modal">
+<meta name="twitter:description" content="We have buttons to add the item into our cart.  However, it doesn&#39;t actually do anything.  First, we need to make sure when the button is clicked, that it is added to our central store.  Add the following to setup_listeners.js. function getP">
+<meta name="twitter:image" content="https://scotch-res.cloudinary.com/image/upload/w_auto,q_auto:good,f_auto/media/1/RdliiByJRFimv38cgQzj_build-an-interactive-js-menu.png.jpg">
+<meta name="twitter:creator" content="@scotch_io">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@scotch_io">
+
+<meta property="og:title" content="Add to Cart and Show Items in Modal">
+<meta property="og:image" content="https://scotch-res.cloudinary.com/image/upload/w_auto,q_auto:good,f_auto/media/1/RdliiByJRFimv38cgQzj_build-an-interactive-js-menu.png.jpg">
+<meta property="og:description" content="We have buttons to add the item into our cart.  However, it doesn&#39;t actually do anything.  First, we need to make sure when the button is clicked, that it is added to our central store.  Add the following to setup_listeners.js. function getP">
+<meta property="article:author" content="Scotch">
+<meta property="fb:admins" content="579622216,709634581">
+<meta property="fb:app_id" content="1389892087910588">
+<meta property="og:url" content="http://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal">
+<meta property="og:type" content="article">
+<meta property="article:publisher" content="https://www.facebook.com/scotchdevelopment">
+<meta property="og:site_name" content="Scotch">
+
+<link rel="publisher" href="https://plus.google.com/b/113854128330570384219">
+<link rel="author" href="https://plus.google.com/b/113854128330570384219">
+<meta name="description" content="We have buttons to add the item into our cart.  However, it doesn&#39;t actually do anything.  First, we need to make sure when the button is clicked, that it is added to our central store.  Add the following to setup_listeners.js. function getP">
+<meta name="google-site-verification" content="NoKkRtzSguNO3Xd1cuhpVkUoh7n8mz-aofV9Ch4aS8w">
+<link href="./Add to Cart and Show Items in Modal ― Scotch.io_files/css" rel="stylesheet">
+<link rel="stylesheet" href="./Add to Cart and Show Items in Modal ― Scotch.io_files/main.css">
+<script async="" src="./Add to Cart and Show Items in Modal ― Scotch.io_files/universal.js.download"></script><script async="" src="./Add to Cart and Show Items in Modal ― Scotch.io_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Add to Cart and Show Items in Modal ― Scotch.io_files/analytics.min.js.download"></script><script async="" src="./Add to Cart and Show Items in Modal ― Scotch.io_files/gtm.js.download"></script><script>
+        window.scotchy = window.scotchy || {};
+        window.scotchy.env = 'production';
+    </script>
+<script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.ready.then(function(registration) {
+                registration.unregister();
+            });
+        }
+    </script>
+<style type="text/css">#react-user-nav{display:flex;align-items:center}@media screen and (max-width:992px){#react-user-nav{margin-left:auto}}#react-user-nav ul{display:flex}#react-user-nav ul>li>a{padding:14px;display:flex;align-items:center}#react-user-nav .user-nav__action{width:auto;padding:0;margin:0 5px;height:43px;display:flex;align-items:center}#react-user-nav .user-nav__action>a{font-size:13px;line-height:1.2;border-radius:3px;color:#fff;display:block;height:100%}#react-user-nav .user-nav__action>a:hover{color:#fff!important}#react-user-nav .user-nav__action button{padding:0;align-items:flex-start;box-shadow:none!important;background:none;border:none}#react-user-nav .user-face{outline:0;border:0;padding:0;position:relative;background:none;margin-right:10px!important}#react-user-nav .user-face:active .dropdown,#react-user-nav .user-face:focus .dropdown{opacity:1;visibility:visible}#react-user-nav .user-face a{font-size:14px!important;color:#555;font-weight:400;padding:9px 12px;text-align:right;margin-top:0}#react-user-nav .user-face a:hover{color:#333!important}#react-user-nav .user-face .img{padding-left:0;padding-right:0;height:43px;width:43px;background-color:#333;background-size:contain;background-position:50%;background-repeat:no-repeat;border-radius:3px;transform:translateY(-3px)}#react-user-nav .dropdown-menu{width:200px}#react-user-nav .dropdown-menu .dropdown-content{padding:0}#react-user-nav .dropdown-menu .dropdown-divider{margin:0}#react-user-nav .dropdown-menu .dropdown-item{padding:0;height:38px;display:flex;justify-content:flex-start;align-items:center;font-size:13px!important}#react-user-nav .dropdown-menu .dropdown-item:hover{background:#e6e6e6}#react-user-nav .dropdown-menu .dropdown-item:hover svg{background:#dbdbdb;color:#209cee}#react-user-nav .dropdown-menu .dropdown-item svg{width:50px;height:100%;padding:10px;background:#f4f4f4;color:#444}#react-user-nav .dropdown-menu .dropdown-item span{padding-left:12px}</style><script type="text/javascript" charset="utf-8" async="" src="./Add to Cart and Show Items in Modal ― Scotch.io_files/25.js.download"></script><script type="text/javascript" charset="utf-8" async="" src="./Add to Cart and Show Items in Modal ― Scotch.io_files/21.js.download"></script><script type="text/javascript" charset="utf-8" async="" src="./Add to Cart and Show Items in Modal ― Scotch.io_files/20.js.download"></script><style type="text/css">#scotchy-nav form.search-form{display:flex;padding:10px 1rem;position:relative;max-width:100%;margin-left:auto;width:400px}@media screen and (max-width:1300px){#scotchy-nav form.search-form{width:200px}}#scotchy-nav form.search-form input{width:100%;background:#333;color:#fff!important;border:none;border-radius:5px;outline:none;padding:12px 20px;font-size:14px;transition:background .3s ease;color:#fff}#scotchy-nav form.search-form input:focus{background:#111}@media screen and (max-width:1407px){#scotchy-nav form.search-form input::-webkit-input-placeholder{color:transparent}#scotchy-nav form.search-form input:-moz-placeholder,#scotchy-nav form.search-form input::-moz-placeholder{color:transparent}#scotchy-nav form.search-form input:-ms-input-placeholder{color:transparent}}#scotchy-nav form.search-form .search-icon{border:none;background:none;outline:none;box-shadow:none;position:absolute;z-index:10;right:30px;top:0;bottom:0}#scotchy-nav form.search-form .search-icon svg path{fill:#555}</style><style data-styled="active" data-styled-version="5.0.0-beta.0"></style><style type="text/css">.react-video,.video-container{position:relative}.video-container{margin-bottom:35px;border-radius:5px;box-shadow:0 25px 17px -20px rgba(0,0,0,.2),0 3px 20px rgba(0,0,0,.1);overflow:hidden;background:#111}.video-container.show-locked{border-top-left-radius:0;border-top-right-radius:0}.video-container.show-destroyed .video-overlay.is-locked,.video-container.show-next .video-overlay.is-next{transform:translateY(0)}.video-overlay{flex-direction:column;color:#fff;background:rgba(0,0,0,.85);position:absolute;bottom:0;left:0;top:0;right:0;padding:30px;z-index:1;transition:transform .5s cubic-bezier(1,0,.37,.99);transform:translateY(-150%)}.video-overlay .title{color:#fff}.video-locked-bar{background:#ff9e9e;top:-49px}.video-locked-bar,.video-locked-bar .filler-bar{position:absolute;left:0;right:0;border-top-left-radius:5px;border-top-right-radius:5px}.video-locked-bar .filler-bar{background:hsla(0,0%,100%,.4);height:100%}.video-locked-bar button,.video-locked-bar p,.video-locked-bar svg{position:relative;z-index:1}.video-locked-bar svg{color:#460f0f}.video-locked-bar p{font-size:16px;font-weight:700;color:#460f0f}.video-locked-bar button{outline:none;border:none;color:#222;border-bottom:1px solid #222;background:none;cursor:pointer;font-size:16px;padding:0 0 3px}</style><style type="text/css">.lesson-list{color:hsla(0,0%,100%,.9)}.lesson-list .lesson-list-meta{display:flex;opacity:.7;line-height:1;border-bottom:1px solid #444;padding-right:15px;padding-bottom:15px;margin-bottom:5px}.lesson-list .lesson-list-meta h5{font-size:14px;color:#eee;line-height:1;font-weight:400;margin-bottom:5px}.lesson-list-header{font-size:16px;margin:20px 0 10px;font-weight:700;position:relative}.lesson-list-header svg{position:absolute;opacity:.07;left:-15px;top:-5px}a.lesson-list-item{font-size:15px;color:hsla(0,0%,100%,.7);display:block;position:relative;line-height:1;padding:12px 10px;transition:all .3s ease;border-top-left-radius:5px;border-bottom-left-radius:5px}@media screen and (max-width:1407px){a.lesson-list-item{align-items:flex-start;flex-direction:column;line-height:1.4}a.lesson-list-item .lesson-actions{margin-top:10px;margin-left:20px}}a.lesson-list-item.is-current,a.lesson-list-item:hover{background:#444}a.lesson-list-item.is-current{border-right:4px solid #f0dd3e}a.lesson-list-item .complete,a.lesson-list-item .position,a.lesson-list-item .text,a.lesson-list-item>div{display:flex;align-items:center}a.lesson-list-item .complete{transform:translateY(-1px)}a.lesson-list-item .position{opacity:.5;font-family:,Consolas,monospace;margin-right:8px;transform:translateY(-1px)}a.lesson-list-item .text{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:70%}a.lesson-list-item .lesson-actions{font-size:13px;font-family:,Consolas,monospace;color:#888;position:absolute;right:15px;top:0;height:100%;padding-bottom:1px}a.lesson-list-item .lesson-actions span:not(:last-child){margin-right:8px}a.lesson-list-item .lesson-actions .duration{min-width:35px;text-align:right}</style></head>
+<body class="is-course is-lesson is-down" data-gr-c-s-loaded="true">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KHWBBT');</script>
+<script>!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}
+    analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";analytics.load("SFn8qPEq8q4VKKdqCB2nQeIcC8jurhpU");analytics.page();}}();</script>
+<nav id="scotchy-nav" class="navbar is-dark">
+<div class="navbar-brand stuck">
+<a class="navbar-item" href="https://scotch.io/">
+<div class="scotch-container">
+<div class="scotch-logo">
+
+<svg class="scotch-logo__liquid" viewBox="0 0 30 48" style="max-width: 80px">
+<defs>
+<clippath id="clip-path--glass">
+<path class="liquid__path-container" d="M 8.6 1.5 c 0 13.33 -4.17 20 -3.75 23.33 a 9.17 8.33 0 0 0 20.83 0 c 0.42 -3.33 -3.75 -10 -3.75 -23.33 Z"></path>
+</clippath>
+<clippath id="clip-path--liquid">
+<path class="liquid__path liquid__path--top-clip" d="M -80 22 C -75.08 16 -69.08 16 -64.17 22 S -53.25 28 -48.33 22 S -37.42 16 -32.5 22 S -21.58 28 -16.67 22 S -5.75 16 -0.83 22 S 10.08 28 15 22 S 25.92 16 30.83 22 S 41.75 28 46.67 22 S 57.58 16 62.5 22 S 73.42 28 78.33 22 S 89.25 16 94.17 22 S 105.08 28 110 22 l 0 30 l -190 0"></path>
+</clippath>
+</defs>
+<g clip-path="url(#clip-path--glass)">
+<circle class="liquid__drop liquid__drop--top liquid__drop--1" cx="18.3" cy="3.3" r="1.5"></circle>
+<circle class="liquid__drop liquid__drop--bottom liquid__drop--2" cx="12" cy="5" r="1.5"></circle>
+<path class="liquid__path liquid__path--top" d="M -80 22 C -75.08 16 -69.08 16 -64.17 22 S -53.25 28 -48.33 22 S -37.42 16 -32.5 22 S -21.58 28 -16.67 22 S -5.75 16 -0.83 22 S 10.08 28 15 22 S 25.92 16 30.83 22 S 41.75 28 46.67 22 S 57.58 16 62.5 22 S 73.42 28 78.33 22 S 89.25 16 94.17 22 S 105.08 28 110 22 l 0 30 l -190 0"></path>
+<path class="liquid__path liquid__path--bottom" d="M -70 24.5 C -65.92 18.5 -59.92 18.5 -55.83 24.5 S -45.75 30.5 -41.67 24.5 S -31.58 18.5 -27.5 24.5 S -17.42 30.5 -13.33 24.5 S -3.25 18.5 0.83 24.5 S 10.92 30.5 15 24.5 S 25.08 18.5 29.17 24.5 S 39.25 30.5 43.33 24.5 S 53.42 18.5 57.5 24.5 S 67.58 30.5 71.67 24.5 S 81.75 18.5 85.83 24.5 S 95.92 30.5 100 24.5 l 0 30 l -170 0"></path>
+<g class="liquid__path--clip-container" clip-path="url(#clip-path--liquid)">
+<path class="liquid__path liquid__path--bottom-clip" d="M -70 24.5 C -65.92 18.5 -59.92 18.5 -55.83 24.5 S -45.75 30.5 -41.67 24.5 S -31.58 18.5 -27.5 24.5 S -17.42 30.5 -13.33 24.5 S -3.25 18.5 0.83 24.5 S 10.92 30.5 15 24.5 S 25.08 18.5 29.17 24.5 S 39.25 30.5 43.33 24.5 S 53.42 18.5 57.5 24.5 S 67.58 30.5 71.67 24.5 S 81.75 18.5 85.83 24.5 S 95.92 30.5 100 24.5 l 0 30 l -170 0"></path>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<span class="logo-text">Scotch</span>
+</a>
+<a role="button" class="navbar-burger" data-target="nav-menu" aria-label="menu" aria-expanded="false">
+<span aria-hidden="true"></span>
+<span aria-hidden="true"></span>
+<span aria-hidden="true"></span>
+</a>
+</div>
+<div id="nav-menu" class="navbar-menu">
+<div class="navbar-start">
+<a class="navbar-item is-active" href="https://scotch.io/courses" title="Courses">
+<span class="left">Video</span>
+<span class="right">Courses</span>
+</a>
+<a class="navbar-item " href="https://scotch.io/tutorials" title="Tutorials">
+<span class="left">Written</span>
+<span class="right">Tutorials</span>
+</a>
+<a class="navbar-item " href="https://scotch.io/bar-talk" title="News">
+<span class="left">Bar Talk</span>
+<span class="right">News</span>
+</a>
+<a class="navbar-item " href="https://scotch.io/website-hosting" title="Hosting">
+<span class="left">Bar Talk</span>
+<span class="right">Hosting</span>
+</a>
+<div class="navbar-item has-dropdown is-hoverable is-hidden-tablet-only is-hidden-mobile navbar-extra">
+<a class="navbar-link">...</a>
+<div class="navbar-dropdown">
+<a class="navbar-item" href="https://scotch.io/about">About</a>
+<a class="navbar-item" href="https://scotch.io/website-hosting">Website Hosting</a>
+<a class="navbar-item" href="https://scotch.io/glossary/javascript">JS Glossary</a>
+<a class="navbar-item" href="https://scotch.io/code-challenges">Code Challenges</a>
+<a class="navbar-item" href="https://scotch.io/sponsor">Sponsor Scotch</a>
+<div class="navbar-item">
+<a class="m-r-sm" href="https://twitter.com/scotch_io" title="Follow Scotch on Twitter" aria-label="Follow Scotch on Twitter">
+<svg class="svg-inline--fa fa-twitter fa-w-16 fa-fw has-text-info" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg><!-- <i class="fab fa-fw fa-twitter has-text-info"></i> -->
+</a>
+<a href="https://facebook.com/scotchdevelopment" title="Follow Scotch on Facebook" aria-label="Follow Scotch on Facebook" style="margin-right: 15px;">
+<svg class="svg-inline--fa fa-facebook fa-w-16 fa-fw has-text-link" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path></svg><!-- <i class="fab fa-fw fa-facebook has-text-link"></i> -->
+</a>
+<a href="https://facebook.com/scotchdevelopment" title="Follow Scotch on GitHub" aria-label="Follow Scotch on GitHub" style="margin-right: 15px;">
+<svg class="svg-inline--fa fa-github-alt fa-w-15 fa-fw has-text-white" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512" data-fa-i2svg=""><path fill="currentColor" d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg><!-- <i class="fab fa-fw fa-github-alt has-text-white"></i> -->
+</a>
+<a href="https://www.youtube.com/channel/UCLyOul64B-SwBpOd9f2Kfxw" title="Follow Scotch on YouTube" aria-label="Follow Scotch on YouTube">
+<svg class="svg-inline--fa fa-youtube fa-w-18 fa-fw has-text-danger" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg><!-- <i class="fab fa-fw fa-youtube has-text-danger"></i> -->
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="navbar-end">
+<div id="react-search-bar"><form class="search-form" action="https://scotch.io/search" method="GET"><input type="search" name="q" placeholder="Search scotchy scotch..." aria-label="Search Scotch"><button type="submit" class="search-icon" aria-label="Search"><svg viewBox="654 -372 1664 1664" width="16" height="16"><path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z"></path></svg></button></form></div>
+<div id="react-user-nav"><nav class="user-nav"><ul><li class="user-nav__action"><a href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal#" class="button is-dark">Login</a></li><li class="user-nav__action"><a class="button is-danger is-outlined"><strong>Sign Up</strong><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="hand-spock" class="svg-inline--fa fa-hand-spock fa-w-16 m-l-sm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M443.1 87.6c-.7-25.9-18.4-50-45.6-56.8-32.3-8.1-65 11.4-73.1 43.8L297.7 208l-31-161.2c-7.4-32.4-39.8-52.7-72.2-45.2-29.7 6.8-49.2 34.7-46.5 64.2-41.2-5.5-76.1 31.8-66.7 73.1L116 291.8v13.7l-14.5-13.6c-24.6-23.2-62.8-21.2-85.2 2.6-22.8 24.2-21.6 62.4 2.6 85.2l133.7 125.9c4.5 4.2 10.3 6.5 16.4 6.5h246.1c10.6 0 20-7 23-17.2l33-111.1c3-10.2 4.6-20.9 4.6-31.5V314c0-4.9.6-9.8 1.7-14.6l32.9-138.2c10-41.8-25.6-79.6-67.2-73.6zm36.1 66.2L446.3 292c-1.7 7.2-2.6 14.6-2.6 22v38.2c0 7.6-1.1 15.2-3.3 22.5L409.2 480H172.3L40.9 356.3c-11.3-10.7-11.9-28.6-1.2-39.9 10.7-11.4 28.6-11.9 39.9-1.2l54.9 51.7c5.1 4.8 13.5 1.2 13.5-5.8v-72c0-.6-.1-1.2-.2-1.8l-35.3-155.5c-8.3-36.4 46.8-49 55.1-12.5L199 257.8c.8 3.6 4.1 6.2 7.8 6.2h8.9c5.1 0 8.9-4.8 7.8-9.8L180.4 66.6C172 30.2 227.1 17.4 235.5 54l46.8 203.9c.8 3.6 4.1 6.2 7.8 6.2h13.7c3.7 0 6.9-2.5 7.8-6.1l43.9-175.5c9.1-36.3 63.9-22.6 54.8 13.7l-39.5 158c-1.3 5.1 2.6 9.9 7.8 9.9h10c3.7 0 6.9-2.5 7.8-6.1l27.9-117.1c8.6-36.5 63.6-23.5 54.9 12.9z"></path></svg></a></li></ul></nav></div>
+</div>
+</div>
+</nav>
+<nav id="tag-nav" class="navbar is-dark is-hidden-touch">
+<a class="navbar-item color-react" href="https://scotch.io/tag/react">
+<span>#</span>react
+</a>
+<a class="navbar-item color-vue" href="https://scotch.io/tag/vue">
+<span>#</span>vue
+</a>
+<a class="navbar-item color-angular" href="https://scotch.io/tag/angular">
+<span>#</span>angular
+</a>
+<a class="navbar-item color-javascript" href="https://scotch.io/tag/javascript">
+<span>#</span>javascript
+</a>
+<a class="navbar-item color-node" href="https://scotch.io/tag/node">
+<span>#</span>node
+</a>
+<a class="navbar-item color-laravel" href="https://scotch.io/tag/laravel">
+<span>#</span>laravel
+</a>
+<a class="navbar-item color-css" href="https://scotch.io/tag/css">
+<span>#</span>css
+</a>
+<a class="navbar-item color-vs-code" href="https://scotch.io/tag/vs-code">
+<span>#</span>vs-code
+</a>
+<a class="navbar-item color-python" href="https://scotch.io/tag/python">
+<span>#</span>python
+</a>
+</nav>
+<div id="tag-nav-placeholder" style="height: 40px;"></div>
+<div id="react-login-modal"></div>
+<main id="scotchy-main">
+<a href="https://bit.ly/2CDPfg2" id="twitch-banner" class="has-text-centered p-a-sm" style="
+    display: none;
+    background: #493a7a;
+    color: hsl(254, 36%, 95%);
+    position: relative;
+    z-index: 1;
+">
+<svg class="svg-inline--fa fa-twitch fa-w-14 m-r-sm" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitch" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M40.1 32L10 108.9v314.3h107V480h60.2l56.8-56.8h87l117-117V32H40.1zm357.8 254.1L331 353H224l-56.8 56.8V353H76.9V72.1h321v214zM331 149v116.9h-40.1V149H331zm-107 0v116.9h-40.1V149H224z"></path></svg><!-- <i class="fab fa-twitch m-r-sm"></i> --> We're live-coding on Twitch! Join us!
+</a>
+<style>
+    #twitch-banner {
+        transition: 0.3s ease background;
+    }
+    #twitch-banner:hover {
+        background: hsl(254, 36%, 45%) !important;
+    }
+</style>
+<div id="article-share-buttons">
+<a href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal?utm_source=scotch&amp;utm_campaign=share&amp;utm_medium=twitter" class="action-button share-button is-social is-twitter m-t" title="Share to Twitter" data-title="Add to Cart and Show Items in Modal" data-type="Twitter" data-via="scotch_io" data-tooltip="Chirp chirp">
+<div role="button" aria-label="Twitter"><svg class="svg-inline--fa fa-twitter fa-w-16 fa-xs" data-fa-transform="right-0.5 down-0.3" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="" style="transform-origin: 0.53125em 0.51875em;"><g transform="translate(256 256)"><g transform="translate(16, 9.6)  scale(1, 1)  rotate(0 0 0)"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" transform="translate(-256 -256)"></path></g></g></svg><!-- <i class="fab fa-twitter fa-xs" data-fa-transform="right-0.5 down-0.3"></i> --></div>
+</a>
+<a href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal?utm_source=scotch&amp;utm_campaign=share&amp;utm_medium=facebook" class="action-button share-button is-social is-facebook m-t" title="Share to Facebook" data-title="Add to Cart and Show Items in Modal" data-type="Facebook" data-tooltip="Zuck it">
+<div role="button" aria-label="Facebook"><svg class="svg-inline--fa fa-facebook fa-w-16 fa-xs" data-fa-transform="up-0.2" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="" style="transform-origin: 0.5em 0.4875em;"><g transform="translate(256 256)"><g transform="translate(0, -6.4)  scale(1, 1)  rotate(0 0 0)"><path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" transform="translate(-256 -256)"></path></g></g></svg><!-- <i class="fab fa-facebook fa-xs" data-fa-transform="up-0.2"></i> --></div>
+</a>
+<a href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal?utm_source=scotch&amp;utm_campaign=share&amp;utm_medium=reddit" class="action-button share-button is-social is-reddit m-t" title="Share to Reddit" data-title="Add to Cart and Show Items in Modal" data-type="Reddit" data-tooltip="Karma me">
+<div role="button" aria-label="Reddit"><svg class="svg-inline--fa fa-reddit-alien fa-w-16 fa-xs" data-fa-transform="left-0.1 up-0.4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="reddit-alien" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="" style="transform-origin: 0.49375em 0.475em;"><g transform="translate(256 256)"><g transform="translate(-3.2, -12.8)  scale(1, 1)  rotate(0 0 0)"><path fill="currentColor" d="M440.3 203.5c-15 0-28.2 6.2-37.9 15.9-35.7-24.7-83.8-40.6-137.1-42.3L293 52.3l88.2 19.8c0 21.6 17.6 39.2 39.2 39.2 22 0 39.7-18.1 39.7-39.7s-17.6-39.7-39.7-39.7c-15.4 0-28.7 9.3-35.3 22l-97.4-21.6c-4.9-1.3-9.7 2.2-11 7.1L246.3 177c-52.9 2.2-100.5 18.1-136.3 42.8-9.7-10.1-23.4-16.3-38.4-16.3-55.6 0-73.8 74.6-22.9 100.1-1.8 7.9-2.6 16.3-2.6 24.7 0 83.8 94.4 151.7 210.3 151.7 116.4 0 210.8-67.9 210.8-151.7 0-8.4-.9-17.2-3.1-25.1 49.9-25.6 31.5-99.7-23.8-99.7zM129.4 308.9c0-22 17.6-39.7 39.7-39.7 21.6 0 39.2 17.6 39.2 39.7 0 21.6-17.6 39.2-39.2 39.2-22 .1-39.7-17.6-39.7-39.2zm214.3 93.5c-36.4 36.4-139.1 36.4-175.5 0-4-3.5-4-9.7 0-13.7 3.5-3.5 9.7-3.5 13.2 0 27.8 28.5 120 29 149 0 3.5-3.5 9.7-3.5 13.2 0 4.1 4 4.1 10.2.1 13.7zm-.8-54.2c-21.6 0-39.2-17.6-39.2-39.2 0-22 17.6-39.7 39.2-39.7 22 0 39.7 17.6 39.7 39.7-.1 21.5-17.7 39.2-39.7 39.2z" transform="translate(-256 -256)"></path></g></g></svg><!-- <i class="fab fa-reddit-alien fa-xs" data-fa-transform="left-0.1 up-0.4"></i> --></div>
+</a>
+</div>
+<article class="article is-lesson is-course is-">
+<div class="article-background is-left"></div>
+<div class="article-background is-right"></div>
+<header class="article-header">
+</header>
+<div class="content m-b-0">
+<div class="container m-b-0 is-fluid">
+<div class="article-columns columns is-gapless">
+<div class="column is-narrow is-left ">
+<div class="article-inner">
+<div class="article-sidebar">
+<h2 class="sidebar-title">
+<a href="https://scotch.io/courses/build-an-interactive-javascript-food-menu">Build an Interactive JavaScript Food Menu Courses</a>
+</h2>
+<div id="react-lesson-list" data-course-id="166" data-course-length="4899" data-course-slug="build-an-interactive-javascript-food-menu" data-course="{&quot;id&quot;:166,&quot;title&quot;:&quot;Build an Interactive JavaScript Food Menu&quot;,&quot;slug&quot;:&quot;build-an-interactive-javascript-food-menu&quot;,&quot;is_free&quot;:false,&quot;is_written&quot;:false,&quot;in_progress&quot;:false,&quot;video&quot;:null,&quot;type&quot;:&quot;courses&quot;}" data-lessons="[{&quot;id&quot;:1096,&quot;title&quot;:&quot;Introduction&quot;,&quot;slug&quot;:&quot;introduction&quot;,&quot;is_free&quot;:true,&quot;position&quot;:1,&quot;lesson_group&quot;:&quot;Getting Started&quot;,&quot;video&quot;:{&quot;id&quot;:385,&quot;videoable_id&quot;:1096,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196505316&quot;,&quot;duration&quot;:116,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505316.hd.mp4?s=8bacc1e804d6d927c7e1bb498c7dab56bca86bb4&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505316.sd.mp4?s=d3de8b06c0edeb2525d13e389be2720aff5a6cd2&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505316.m3u8?s=302e3028cd8206fc3c72894a2c2c22bd6ac04cf8&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609004754_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:51&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:51&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}},{&quot;id&quot;:1097,&quot;title&quot;:&quot;Setting Up Our Dev Environment&quot;,&quot;slug&quot;:&quot;setting-up-our-dev-environment&quot;,&quot;is_free&quot;:true,&quot;position&quot;:2,&quot;lesson_group&quot;:null,&quot;video&quot;:{&quot;id&quot;:386,&quot;videoable_id&quot;:1097,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196505332&quot;,&quot;duration&quot;:378,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505332.hd.mp4?s=5948e4322807b51e959ba93b05e0e5b3e155e4a4&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505332.sd.mp4?s=b1ea0824737b826218cb787382516055abcd899a&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505332.m3u8?s=313ec046c7cf1a758ac9810010e62dfc4027d70b&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609004810_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:51&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:51&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}},{&quot;id&quot;:1098,&quot;title&quot;:&quot;Creating the App Wrapper&quot;,&quot;slug&quot;:&quot;creating-the-app-wrapper&quot;,&quot;is_free&quot;:true,&quot;position&quot;:3,&quot;lesson_group&quot;:&quot;Starting App&quot;,&quot;video&quot;:{&quot;id&quot;:387,&quot;videoable_id&quot;:1098,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196504960&quot;,&quot;duration&quot;:547,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196504960.hd.mp4?s=c210d24c818658ea7ec4ce3d530af2122ff4a168&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196504960.sd.mp4?s=250a14185aa3862c13f4f75d55ab901908b85e85&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196504960.m3u8?s=8def3a7bf46faa5cf4fe33512804de140b3b0851&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609004373_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}},{&quot;id&quot;:1099,&quot;title&quot;:&quot;Creating the Navbar&quot;,&quot;slug&quot;:&quot;creating-the-navbar&quot;,&quot;is_free&quot;:true,&quot;position&quot;:4,&quot;lesson_group&quot;:null,&quot;video&quot;:{&quot;id&quot;:388,&quot;videoable_id&quot;:1099,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196505002&quot;,&quot;duration&quot;:368,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505002.hd.mp4?s=6cbb6d44f679bc7ec12eb799e8d1700a9eab0812&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505002.sd.mp4?s=020e35f0494f07911855af1deb919936b4119279&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505002.m3u8?s=92149a08cd1084ba6a77a2fd809b59f5d45c2f18&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609004424_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}},{&quot;id&quot;:1100,&quot;title&quot;:&quot;Creating the Hero&quot;,&quot;slug&quot;:&quot;creating-the-hero&quot;,&quot;is_free&quot;:true,&quot;position&quot;:5,&quot;lesson_group&quot;:null,&quot;video&quot;:{&quot;id&quot;:389,&quot;videoable_id&quot;:1100,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196505029&quot;,&quot;duration&quot;:190,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505029.hd.mp4?s=b51b0ac730420410a685525651c4cafa6bd2c703&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505029.sd.mp4?s=b729094b66f0044b24de21f449119ea4958bae4d&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505029.m3u8?s=e7d9fa0ebe6c2422a67751e055961b6ee69c3602&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609004378_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}},{&quot;id&quot;:1109,&quot;title&quot;:&quot;Creating the Menu&quot;,&quot;slug&quot;:&quot;creating-the-menu&quot;,&quot;is_free&quot;:true,&quot;position&quot;:6,&quot;lesson_group&quot;:null,&quot;video&quot;:{&quot;id&quot;:398,&quot;videoable_id&quot;:1109,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196505968&quot;,&quot;duration&quot;:698,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505968.hd.mp4?s=fa400dc007602cd57dc1f2814af21ad984924be7&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505968.sd.mp4?s=3dadc4074854b6e1ba8351ec0a83023e1208b416&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505968.m3u8?s=f69b7f9b2e4b6e0e1e9e9dfb467f77263e77a8f5&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609005701_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:53&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:53&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}},{&quot;id&quot;:1101,&quot;title&quot;:&quot;Creating the Footer&quot;,&quot;slug&quot;:&quot;creating-the-footer&quot;,&quot;is_free&quot;:true,&quot;position&quot;:7,&quot;lesson_group&quot;:null,&quot;video&quot;:{&quot;id&quot;:390,&quot;videoable_id&quot;:1101,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196505043&quot;,&quot;duration&quot;:116,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505043.hd.mp4?s=1c852e763273daa8124bf87e9352df356ce7c2d3&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505043.sd.mp4?s=938dd749f0f4b4099c60dc4cd2553c484404c3d0&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505043.m3u8?s=1366b8b730a274ac054f36481e170a6dde54e7e0&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609004449_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}},{&quot;id&quot;:1102,&quot;title&quot;:&quot;Creating the Modal&quot;,&quot;slug&quot;:&quot;creating-the-modal&quot;,&quot;is_free&quot;:true,&quot;position&quot;:8,&quot;lesson_group&quot;:null,&quot;video&quot;:{&quot;id&quot;:391,&quot;videoable_id&quot;:1102,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196505055&quot;,&quot;duration&quot;:261,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505055.hd.mp4?s=799e8c88c292775894399333766ff1445edebb47&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505055.sd.mp4?s=7de400cd03a36f336dda30e8d0de9f1761f74704&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505055.m3u8?s=dbb34b282129c1d73bc76d2542fc76bf2dc4f507&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609004490_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}},{&quot;id&quot;:1103,&quot;title&quot;:&quot;Setting Up a Central State&quot;,&quot;slug&quot;:&quot;setting-up-a-central-state&quot;,&quot;is_free&quot;:true,&quot;position&quot;:9,&quot;lesson_group&quot;:&quot;Moving Forward&quot;,&quot;video&quot;:{&quot;id&quot;:392,&quot;videoable_id&quot;:1103,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196505088&quot;,&quot;duration&quot;:517,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505088.hd.mp4?s=84a6b7f07b23c77dd5b0f0243657ab827be730c3&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505088.sd.mp4?s=a5695e2d171f45f2562475426c15d1ebecaabe71&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505088.m3u8?s=a78c63660b15b7bfe709b803b72b71161399cd76&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609004565_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}},{&quot;id&quot;:1104,&quot;title&quot;:&quot;Showing Menu Using the Store&quot;,&quot;slug&quot;:&quot;showing-menu-using-the-store&quot;,&quot;is_free&quot;:false,&quot;position&quot;:10,&quot;lesson_group&quot;:null,&quot;video&quot;:{&quot;id&quot;:393,&quot;videoable_id&quot;:1104,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196505134&quot;,&quot;duration&quot;:419,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505134.hd.mp4?s=1b53d76ec570c166acd74fd1fa69ef82b9ecd759&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505134.sd.mp4?s=727777038d579a8c80f2d378f0efde28943d76f7&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505134.m3u8?s=3b81f6835a9a63cd2b2e20480d98b091964afb86&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609004595_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:52&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}},{&quot;id&quot;:1105,&quot;title&quot;:&quot;Showing Modal Based on Store Flag&quot;,&quot;slug&quot;:&quot;showing-modal-based-on-store-flag&quot;,&quot;is_free&quot;:false,&quot;position&quot;:11,&quot;lesson_group&quot;:null,&quot;video&quot;:{&quot;id&quot;:394,&quot;videoable_id&quot;:1105,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196505173&quot;,&quot;duration&quot;:344,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505173.hd.mp4?s=88a0807c123e6c2d5fe9226f781e5f97ceaf0a6b&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505173.sd.mp4?s=339be68e1b01bf4fe062e004b5aeddc8739b76c9&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505173.m3u8?s=22e167fc3fbcebbd35c1a9d3332b5545635be4e9&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609004663_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:53&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:53&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}},{&quot;id&quot;:1106,&quot;title&quot;:&quot;Add to Cart and Show Items in Modal&quot;,&quot;slug&quot;:&quot;add-to-cart-and-show-items-in-modal&quot;,&quot;is_free&quot;:false,&quot;position&quot;:12,&quot;lesson_group&quot;:null,&quot;video&quot;:{&quot;id&quot;:395,&quot;videoable_id&quot;:1106,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196505222&quot;,&quot;duration&quot;:396,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505222.hd.mp4?s=48f5c9b2dd09cb26e23f645477d700d367a7cbd5&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505222.sd.mp4?s=255627dc3bd5deef4e04517f2582e39caa24bff4&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505222.m3u8?s=173ddd18d72d1d2900f64857b2530065dc7daf79&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609004660_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:53&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:53&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}},{&quot;id&quot;:1107,&quot;title&quot;:&quot;Remove from Cart&quot;,&quot;slug&quot;:&quot;remove-from-cart&quot;,&quot;is_free&quot;:false,&quot;position&quot;:13,&quot;lesson_group&quot;:null,&quot;video&quot;:{&quot;id&quot;:396,&quot;videoable_id&quot;:1107,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196505259&quot;,&quot;duration&quot;:382,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505259.hd.mp4?s=86e3fc51feb65899e929846f3ea30ed7c5cb2249&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505259.sd.mp4?s=d1ed89b14122bd190c28481091f57f02cc6871b3&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505259.m3u8?s=b0dd4b38d61753315bb9b76e36440fbc1daf4daf&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609004757_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:53&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:53&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}},{&quot;id&quot;:1108,&quot;title&quot;:&quot;Wrapup&quot;,&quot;slug&quot;:&quot;wrapup&quot;,&quot;is_free&quot;:false,&quot;position&quot;:14,&quot;lesson_group&quot;:null,&quot;video&quot;:{&quot;id&quot;:397,&quot;videoable_id&quot;:1108,&quot;videoable_type&quot;:&quot;App\\Models\\Lesson&quot;,&quot;source_id&quot;:&quot;196505297&quot;,&quot;duration&quot;:167,&quot;watch_link_hd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505297.hd.mp4?s=8e455f7041aa4a0ba927acd5a4308d061f4823fc&amp;profile_id=174&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_sd&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505297.sd.mp4?s=7e0ea4de8ed7213535be8b08cb303be5686e5da4&amp;profile_id=165&amp;oauth2_token_id=1232737893&quot;,&quot;watch_link_uhd&quot;:null,&quot;watch_link_hls&quot;:&quot;https:\/\/player.vimeo.com\/external\/196505297.m3u8?s=4d86c41104811c4b1a0dafc01da7db4869f8703e&amp;oauth2_token_id=1232737893&quot;,&quot;thumbnail&quot;:&quot;\/\/i.vimeocdn.com\/video\/609004721_200x150.jpg?r=pad&quot;,&quot;captions&quot;:null,&quot;html&quot;:null,&quot;created_at&quot;:&quot;2019-07-15 11:06:53&quot;,&quot;updated_at&quot;:&quot;2019-07-15 11:06:53&quot;,&quot;source_type&quot;:null,&quot;source_url&quot;:null}}]" data-current-lesson="12"><div class="lesson-list"><div class="lesson-list-meta"><p class="m-r-sm">14 Lessons</p><p class="">1.35 hours</p></div><div class="lesson-list-header"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="browser" class="svg-inline--fa fa-browser fa-w-16 fa-2x " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM128 148c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm320 0c0 6.6-5.4 12-12 12H188c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h248c6.6 0 12 5.4 12 12v40z"></path></svg>Getting Started</div><a class="lesson-list-item lesson " href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/introduction" title="Introduction"><div><span class="position">1</span><span class="text">Introduction</span></div><div class="lesson-actions"><span class="duration">1:56</span></div></a><a class="lesson-list-item lesson " href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/setting-up-our-dev-environment" title="Setting Up Our Dev Environment"><div><span class="position">2</span><span class="text">Setting Up Our Dev Environment</span></div><div class="lesson-actions"><span class="duration">6:18</span></div></a><div class="lesson-list-header"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="browser" class="svg-inline--fa fa-browser fa-w-16 fa-2x " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM128 148c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm320 0c0 6.6-5.4 12-12 12H188c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h248c6.6 0 12 5.4 12 12v40z"></path></svg>Starting App</div><a class="lesson-list-item lesson " href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/creating-the-app-wrapper" title="Creating the App Wrapper"><div><span class="position">3</span><span class="text">Creating the App Wrapper</span></div><div class="lesson-actions"><span class="duration">9:07</span></div></a><a class="lesson-list-item lesson " href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/creating-the-navbar" title="Creating the Navbar"><div><span class="position">4</span><span class="text">Creating the Navbar</span></div><div class="lesson-actions"><span class="duration">6:08</span></div></a><a class="lesson-list-item lesson " href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/creating-the-hero" title="Creating the Hero"><div><span class="position">5</span><span class="text">Creating the Hero</span></div><div class="lesson-actions"><span class="duration">3:10</span></div></a><a class="lesson-list-item lesson " href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/creating-the-menu" title="Creating the Menu"><div><span class="position">6</span><span class="text">Creating the Menu</span></div><div class="lesson-actions"><span class="duration">11:38</span></div></a><a class="lesson-list-item lesson " href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/creating-the-footer" title="Creating the Footer"><div><span class="position">7</span><span class="text">Creating the Footer</span></div><div class="lesson-actions"><span class="duration">1:56</span></div></a><a class="lesson-list-item lesson " href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/creating-the-modal" title="Creating the Modal"><div><span class="position">8</span><span class="text">Creating the Modal</span></div><div class="lesson-actions"><span class="duration">4:21</span></div></a><div class="lesson-list-header"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="browser" class="svg-inline--fa fa-browser fa-w-16 fa-2x " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM128 148c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm320 0c0 6.6-5.4 12-12 12H188c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h248c6.6 0 12 5.4 12 12v40z"></path></svg>Moving Forward</div><a class="lesson-list-item lesson " href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/setting-up-a-central-state" title="Setting Up a Central State"><div><span class="position">9</span><span class="text">Setting Up a Central State</span></div><div class="lesson-actions"><span class="duration">8:37</span></div></a><a class="lesson-list-item lesson " href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/showing-menu-using-the-store" title="Showing Menu Using the Store"><div><span class="position">10</span><span class="text">Showing Menu Using the Store</span></div><div class="lesson-actions"><span class="duration">6:59</span></div></a><a class="lesson-list-item lesson " href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/showing-modal-based-on-store-flag" title="Showing Modal Based on Store Flag"><div><span class="position">11</span><span class="text">Showing Modal Based on Store Flag</span></div><div class="lesson-actions"><span class="duration">5:44</span></div></a><a class="lesson-list-item lesson is-current" href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal" title="Add to Cart and Show Items in Modal"><div><span class="position">12</span><span class="text">Add to Cart and Show Items in Modal</span></div><div class="lesson-actions"><span class="duration">6:36</span></div></a><a class="lesson-list-item lesson " href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/remove-from-cart" title="Remove from Cart"><div><span class="position">13</span><span class="text">Remove from Cart</span></div><div class="lesson-actions"><span class="duration">6:22</span></div></a><a class="lesson-list-item lesson " href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/wrapup" title="Wrapup"><div><span class="position">14</span><span class="text">Wrapup</span></div><div class="lesson-actions"><span class="duration">2:47</span></div></a></div></div>
+</div>
+</div>
+</div>
+<div class="column is-middle">
+<div class="article-inner">
+<svg width="2000" height="2000" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" class="blob">
+<g transform="translate(300,300)">
+<path d="M67.5,-106.7C77.5,-57.5,68.8,-28.8,79.8,11.1C90.9,50.9,121.8,101.8,111.8,133C101.8,164.2,50.9,175.6,-4,179.6C-58.9,183.6,-117.9,180.2,-163,149C-208.2,117.9,-239.6,58.9,-242.4,-2.8C-245.2,-64.6,-219.5,-129.2,-174.3,-178.3C-129.2,-227.5,-64.6,-261.2,-17.9,-243.3C28.8,-225.4,57.5,-155.8,67.5,-106.7Z" fill="#f0dd3e"></path>
+</g>
+</svg>
+<div class="m-b-md">
+<div class="is-hidden-with-subscription has-text-centered">
+<div id="bsa-zone_1537909991-0_123456"></div>
+<div id="carbon-block"><script src="./Add to Cart and Show Items in Modal ― Scotch.io_files/carbon.js.download" id="_carbonads_js"></script></div>
+<script>
+    try {
+        var hasCarbonScriptLoaded = false;
+        if (document.getElementById('_carbonads_js')) hasCarbonScriptLoaded = true;
+
+        if (!hasCarbonScriptLoaded) {
+            fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' }))
+                .then(function(response) {
+                    return true;
+                }).catch(function(e) {
+
+                    console.log('calling carbon fallback');
+                    var carbonScript = document.createElement("script");
+                    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CE7D6KQW&placement=scotchio";
+                    carbonScript.id = "_carbonads_js";
+                    document.getElementById("carbon-block").appendChild(carbonScript);
+                });
+        }
+    } catch (error) {
+        // console.log(error);
+    }
+</script>
+<style>
+    #carbonads {
+        display: block;
+        overflow: hidden;
+        max-width: 728px;
+        position: relative;
+        margin: 0 auto;
+        background-color: hsl(0, 0%, 99%);
+        border: solid 1px #eee;
+        font-size: 22px;
+        box-sizing: content-box;
+    }
+
+    #carbonads > span {
+        display: block;
+    }
+
+    #carbonads a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    #carbonads a:hover {
+        color: inherit;
+    }
+
+    .carbon-wrap {
+        display: flex;
+        align-items: center;
+    }
+
+    .carbon-img {
+        display: block;
+        margin: 0;
+        line-height: 1;
+    }
+
+    .carbon-img img {
+        display: block;
+        height: 90px;
+        width: auto;
+    }
+
+    .carbon-text {
+        display: block;
+        padding: 0 1em;
+        line-height: 1.35;
+        text-align: left;
+    }
+
+    .carbon-poweredby {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 6px 10px;
+        background: repeating-linear-gradient(
+                        -45deg,
+                        transparent,
+                        transparent 5px,
+                        hsla(0, 0%, 0%, 0.025) 5px,
+                        hsla(0, 0%, 0%, 0.025) 10px
+        )
+        hsla(203, 11%, 95%, 0.8);
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        font-size: 8px;
+        border-top-left-radius: 4px;
+        line-height: 1;
+    }
+
+    @media  only screen and (min-width: 320px) and (max-width: 759px) {
+        .carbon-text {
+        font-size: 14px;
+        }
+    }
+</style>
+</div>
+</div>
+<div class="article-feature">
+<div class="react-video" data-image="https://scotch-res.cloudinary.com/image/upload/w_auto,q_auto:good,f_auto/media/1/RdliiByJRFimv38cgQzj_build-an-interactive-js-menu.png.jpg" data-course-id="166" data-lesson-id="1106" data-autoplay="false" data-video-id="196505222" data-video-title="Add to Cart and Show Items in Modal" data-is-free="false" data-next-url="/courses/build-an-interactive-javascript-food-menu/remove-from-cart"><div><div class="video-container  "><div class="video-overlay is-next center-flex"></div><div class="vimeo-embed"><div data-vimeo-initialized="true"><div style="padding:62.5% 0 0 0;position:relative;"><iframe src="./Add to Cart and Show Items in Modal ― Scotch.io_files/196505222.html" frameborder="0" allow="autoplay; fullscreen" allowfullscreen="" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="12-AddingToCart" data-ready="true"></iframe></div></div></div></div></div></div>
+</div>
+<div class="m-t m-b-lg" style="position: relative">
+<div class="article-title m-b-md">
+<h2 class="subtitle is-6 m-b-xs">
+<a href="https://scotch.io/courses/build-an-interactive-javascript-food-menu" alt="Build an Interactive JavaScript Food Menu Courses">
+Build an Interactive JavaScript Food Menu Courses
+<small>- Lesson 12 of 14</small>
+</a>
+</h2>
+<h1 class="title is-2 m-t-0 m-b-xs">Add to Cart and Show Items in Modal</h1>
+<div class="article-byline m-b">
+<div class="scotch-line">
+<div class="author">
+<a href="https://scotch.io/@chris" class="img" title="Chris on Code&#39;s Avatar" style="background-image: url(https://scotch-res.cloudinary.com/image/upload/w_40,h_40,q_auto:good,f_auto,c_fill,g_face/media/1/w7Vhk81SyClJPlDQPMLh_17795826_10154678250924582_8102840950354615336_n.jpg);">
+</a>
+<a href="https://scotch.io/@chris" title="Chris on Code">
+Chris on Code
+</a>
+<a class="m-l-sm m-r-xs has-text-light" href="https://twitter.com/chrisoncode" title="Follow @chrisoncode on Twitter" style="
+                background: #1e99e6;
+                border-radius: 4px;
+                color: #fff;
+                font-size: 14px;
+                display: inline-block;
+                padding: 2px 8px;
+                letter-spacing: 0.5px;
+                margin-left: 9px;
+            ">
+<svg class="svg-inline--fa fa-twitter fa-w-16 fa-fw" style="transform: translateY(1px);" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg><!-- <i class="fab fa-fw fa-twitter" style="transform: translateY(1px);"></i> -->
+@chrisoncode
+</a>
+</div>
+<time></time>
+<a href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal#comments" class="comment-number" title="Comments on this Article" data-id="L-1106" data-has-words="true">0 Comments</a>
+<div id="react-bookmark" data-article-type="course" data-article-id="1106" data-article-title="Add to Cart and Show Items in Modal"><div class="sc-AykKD"><a class="bookmark-button m-r-sm"><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="bookmark" class="svg-inline--fa fa-bookmark fa-w-12 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M336 0H48C21.49 0 0 21.49 0 48v464l192-112 192 112V48c0-26.51-21.49-48-48-48zm16 456.287l-160-93.333-160 93.333V48c0-8.822 7.178-16 16-16h288c8.822 0 16 7.178 16 16v408.287z"></path></svg> Bookmark</a></div></div>
+</div>
+</div>
+</div>
+<div class="article-links">
+<a href="https://github.com/scotch-io/javascript-food-menu-course" target="_blank" rel="noopener noreferrer" class="button is-scotch is-large is-outlined is-info is-rounded">
+Code
+</a>
+<a href="https://scotch-io.github.io/javascript-food-menu-course/" target="_blank" rel="noopener noreferrer" class="button is-scotch is-large is-outlined is-info is-rounded">
+Demo
+</a>
+</div>
+</div>
+<div class="article-content">
+<p>We have buttons to add the item into our cart. However, it doesn't actually do anything. First, we need to make sure when the button is clicked, that it is added to our central store. Add the following to <code>setup_listeners.js</code>.</p>
+<pre class="language-javascript" data-title="javascript" style="clip-path: url(&quot;#svg-blob__clip--c249ab37-c30b-41a0-92e2-ae8e7bebc164&quot;);"><svg viewBox="0 0 891 708" class="svg-blob__svg"><defs><clippath id="svg-blob__clip--c249ab37-c30b-41a0-92e2-ae8e7bebc164"><path class="svg-blob__path" d="M 74.82507460230545 6.506789712324092 Q 74.82507460230545 6.506789712324092 117.63883977398383 10.454700850160062 Q 160.45260494566222 14.402611987996032 206.3314143553854 8.889488133088628 Q 252.21022376510857 3.376364278181223 305.6133678877056 5.61517761965653 Q 359.0165120103026 7.853990961131837 403.8660612429464 11.576167184691089 Q 448.71561047559015 15.298343408250341 484.0307290689915 15.380354436959497 Q 519.3458476623928 15.46236546566865 585.8832897464849 14.233891605739368 Q 652.420731830577 13.005417745810085 719.0262858379608 10.02912497583393 Q 785.6318398453448 7.052832205857776 829.6030695241363 7.295135447115076 Q 873.574299202928 7.537438688372376 875.0953156006874 75.62206653299089 Q 876.6163319984468 143.70669437760938 876.6214764769779 187.19725610376202 Q 876.6266209555092 230.68781782991465 880.7523795453449 283.4129325492315 Q 884.8781381351805 336.1380472685484 881.8479653141592 417.7920239435659 Q 878.8177924931379 499.44600061858335 877.6431979176512 543.2487542129916 Q 876.4686033421643 587.0515078073998 878.0027714743717 642.2910342490745 Q 879.536939606579 697.5305606907493 816.3435707281326 700.4978618755845 Q 753.150201849686 703.4651630604197 678.4034442127873 702.9173875715508 Q 603.6566865758887 702.3696120826817 529.1995575662763 697.2113997398912 Q 454.74242855666404 692.0531873971009 387.14989137001294 697.0973125098681 Q 319.55735418336184 702.1414376226351 275.9664014381549 700.170120233546 Q 232.375448692948 698.1988028444567 187.21466511649385 696.0204379343315 Q 142.05388154003967 693.8420730242063 78.73302709102919 697.2093997830941 Q 15.412172642018703 700.5767265419819 10.00863835126688 659.7809985551505 Q 4.605104060515057 618.9852705683192 5.0833921852802355 577.1982756846353 Q 5.561680310045415 535.4112808009513 8.537286654936903 482.4834819104293 Q 11.51289299982839 429.55568301990735 7.640700599240406 377.1934962651489 Q 3.7685081986524205 324.83130951039044 2.958025208015305 286.6074880685367 Q 2.1475422173781897 248.383666626683 4.9609325569002625 173.55754961725086 Q 7.774322896422335 98.7314326078187 11.27168789495325 55.790172696901394 Q 14.769052893484162 12.84891278598408 44.7970637478948 9.677851249154086 Q 74.82507460230545 6.506789712324092 117.63883977398383 10.454700850160062"></path></clippath></defs></svg><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">getParentWithKey</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> parent <span class="token operator">=</span> element<span class="token punctuation">.</span>parentElement<span class="token punctuation">;</span>
+
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>parent <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>parent<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    parent <span class="token operator">=</span> parent<span class="token punctuation">.</span>parentElement<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> parent<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'.add-to-cart'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> e <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> parent <span class="token operator">=</span> <span class="token function">getParentWithKey</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>currentTarget<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> key <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>key<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  store<span class="token punctuation">.</span><span class="token function">trigger</span><span class="token punctuation">(</span><span class="token string">'ITEM_ADDED'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> item<span class="token punctuation">:</span> key <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Here, we add a helper method that will get the parent of the current object that has a <code>data-key</code> attribute. This should be the <code>article</code> element that the button is inside of in our markup. Then it uses <code>parseInt</code> to make the key an integer since they are stored as strings. Lastly, it triggers an <code>ITEM_ADDED</code> event on the store and passes the key in as the item that is to be added to the cart. This is why we keep the items in our store as a map where the keys are the IDs of each item. It makes looking them up extremely easy and quick.</p>
+<p>Now we need to make sure that our reducer updates our state correctly. Add the following <code>case</code> to our reducer in <code>index.js</code>.</p>
+<pre class="language-javascript" data-title="javascript" style="clip-path: url(&quot;#svg-blob__clip--2f821b2c-4ccf-4511-b9de-286625dea0d3&quot;);"><svg viewBox="0 0 891 304" class="svg-blob__svg"><defs><clippath id="svg-blob__clip--2f821b2c-4ccf-4511-b9de-286625dea0d3"><path class="svg-blob__path" d="M 88.60329433513033 13.439294888008746 Q 88.60329433513033 13.439294888008746 129.9348601654993 8.415709514244158 Q 171.26642599586822 3.392124140479569 218.64447103278275 8.692426759489267 Q 266.02251606969725 13.992729378498964 315.5464252535155 8.734691133485102 Q 365.0703344373337 3.47665288847124 407.92154719349656 9.176723273629136 Q 450.7727599496594 14.876793658787033 499.6863590876618 9.501737006046284 Q 548.5999582256642 4.126680353305536 613.1986655994854 8.568687565247597 Q 677.7973729733066 13.010694777189656 724.9307674180484 8.722420656941082 Q 772.0641618627901 4.4341465366925075 824.8623437235478 10.170347808338814 Q 877.6605255843057 15.906549079985119 882.0408130153646 58.57043680250344 Q 886.4211004464236 101.23432452502176 881.8671294451976 141.08475444966805 Q 877.3131584439716 180.93518437431433 876.4578116029968 240.2052412448146 Q 875.6024647620221 299.4752981153149 845.7229714441128 299.91936166434715 Q 815.8434781262034 300.3634252133794 753.1627451945294 298.6341395090526 Q 690.4820122628555 296.9048538047258 654.5194056365692 292.9913266283628 Q 618.5567990102829 289.0777994519998 561.9992801594047 291.7272906718897 Q 505.44176130852657 294.37678189177956 460.8496349627409 293.91775776564145 Q 416.25750861695514 293.4587336395033 372.47007638441823 291.8117466343638 Q 328.6826441518813 290.16475962922425 286.52811305598584 295.2780351052269 Q 244.37358196009046 300.3913105812295 184.48580153507842 299.8011553127361 Q 124.5980211100664 299.21100004424267 68.21930518095023 295.3544897046827 Q 11.84058925183406 291.4979793651228 9.277399015590365 248.26210730821919 Q 6.714208779346671 205.0262352513156 11.882902820022217 164.53108434090194 Q 17.051596860697764 124.03593343048829 12.897449512858117 67.59504780261221 Q 8.74330216501847 11.15416217473614 48.673298250074396 12.296728531372443 Q 88.60329433513033 13.439294888008746 129.9348601654993 8.415709514244158"></path></clippath></defs></svg><code class="language-javascript"><span class="token keyword">case</span> <span class="token string">'ITEM_ADDED'</span><span class="token punctuation">:</span>
+  <span class="token keyword">return</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> state<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    cart<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>cart<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>item<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>This simply creates a new <code>Set</code> object and passes it the current <code>Set</code> of carts. It then uses the <code>add</code> method on the <code>Set</code> object to add the new item's ID to the list of items in the cart. We are using a <code>Set</code> so that we don't have to check if the item is already in the cart. JavaScript handles it for us!</p>
+<p>Now that the event can be triggered, we now need to make two different things happen. We need to make the item on the menu fade a bit and disable the button. We also need to add the item to the modal that shows our cart. Let's start with making the item fade. Add the following to <code>menu.js</code>.</p>
+<pre class="language-javascript" data-title="javascript" style="clip-path: url(&quot;#svg-blob__clip--617bb392-1ba9-47dc-99b1-df326b84c487&quot;);"><svg viewBox="0 0 891 446" class="svg-blob__svg"><defs><clippath id="svg-blob__clip--617bb392-1ba9-47dc-99b1-df326b84c487"><path class="svg-blob__path" d="M 100.9937784350226 14.240052017906404 Q 100.9937784350226 14.240052017906404 142.62711735958263 14.602195846171162 Q 184.26045628414266 14.96433967443592 258.167935764978 12.125902383297433 Q 332.0754152458133 9.287465092158945 373.60111764262126 11.162662966436592 Q 415.1268200394293 13.03786084071424 456.4476846295146 13.368072469284325 Q 497.76854921959983 13.698284097854408 575.4474857171896 10.873703305956948 Q 653.1264222147794 8.049122514059485 710.4327927523841 11.486570857787708 Q 767.7391632899888 14.92401920151593 821.8456222664897 12.230098019106915 Q 875.9520812429907 9.536176836697898 879.3847011629787 41.120540822589675 Q 882.8173210829667 72.70490480848144 885.6962241628529 147.90228345344204 Q 888.5751272427391 223.09966209840263 882.6620477227959 285.15551747813595 Q 876.7489682028528 347.2113728578692 876.7804881894647 393.35452330640095 Q 876.8120081760765 439.4976737549327 837.7356897112257 442.252037592611 Q 798.659371246375 445.00640143028926 742.0321996917426 440.65539446377534 Q 685.4050281371102 436.30438749726136 628.0622914132807 435.3421883896577 Q 570.7195546894511 434.379989282054 524.9678655589304 439.63284121915035 Q 479.2161764284096 444.8856931562467 437.9832320965384 437.0884205209104 Q 396.75028776466723 429.2911478855741 350.64792189624166 434.77771189025975 Q 304.545556027816 440.26427589494546 256.740002634092 437.052984657986 Q 208.93444924036788 433.8416934210265 171.65375558406214 434.5543901611769 Q 134.37306192775642 435.2670869013273 72.71938096730415 434.194546946428 Q 11.065700006851884 433.12200699152874 8.01379195828201 397.46350969622154 Q 4.961883909712136 361.8050124009143 4.735909788436001 299.87500402596777 Q 4.5099356671598665 237.9449956510213 7.067383289542061 187.30020990250296 Q 9.624830911924256 136.65542415398465 10.632307536560358 77.05744426226059 Q 11.639784161196458 17.45946437053652 56.31678129810953 15.849758194221462 Q 100.9937784350226 14.240052017906404 142.62711735958263 14.602195846171162"></path></clippath></defs></svg><code class="language-javascript">store<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'ITEM_ADDED'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> cart <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> cartArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>cart<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> articles <span class="token operator">=</span> cartArray<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>id <span class="token operator">=&gt;</span> <span class="token template-string"><span class="token string">`article[data-key='</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">']`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> buttons <span class="token operator">=</span> cartArray<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>id <span class="token operator">=&gt;</span> <span class="token template-string"><span class="token string">`article[data-key='</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">'] button.add-to-cart`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">$</span><span class="token punctuation">(</span>articles<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">', '</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">'in-cart'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">$</span><span class="token punctuation">(</span>buttons<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">', '</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'disabled'</span><span class="token punctuation">,</span> <span class="token string">'disabled'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>We are sttaching a callback to the <code>ITEM_ADDED</code> event on the store. We are using object destructuring in the parameters of our function to automatically pull out the cart for us. This is a shortcut instead of doing something like this instead: <code>state.cart</code>. Then we loop through all the IDs in the cart and add strings of their CSS selector into two array we created. Then we use the <code>addClass</code> helper we created to add a class to each article that will fade them out. We also grab all the buttons and add a <code>disabled</code> attribute to each of them. However, we are using a method we haven't created yet. In <code>helpers.js</code>, add this to the inside of the <code>$</code> helper we made.</p>
+<pre class="language-javascript" data-title="javascript" style="clip-path: url(&quot;#svg-blob__clip--173d6391-bf8f-439f-bc26-70d4c2b61a93&quot;);"><svg viewBox="0 0 891 742" class="svg-blob__svg"><defs><clippath id="svg-blob__clip--173d6391-bf8f-439f-bc26-70d4c2b61a93"><path class="svg-blob__path" d="M 114.19036483869311 12.668714923097 Q 114.19036483869311 12.668714923097 169.77402730075664 12.296181217624149 Q 225.35768976282017 11.923647512151296 296.8596758939601 10.738312426058677 Q 368.3616620251001 9.552977339966056 431.06679637038906 12.691694050720656 Q 493.771930715678 15.830410761475257 552.9120012775079 13.477759592552635 Q 612.0520718393377 11.125108423630014 669.8878147065743 8.684934192904155 Q 727.7235575738109 6.2447599621782945 808.2781316128152 7.103988088498293 Q 888.8327056518194 7.963216214818292 886.2524912659185 44.01667360212695 Q 883.6722768800175 80.07013098943561 882.3114430513137 145.37767563804692 Q 880.95060922261 210.68522028665825 877.6889596090225 279.3090091829111 Q 874.4273099954349 347.93279807916394 880.6010142500995 399.4743626018544 Q 886.774718504764 451.01592712454493 882.9365543393757 508.4277701959919 Q 879.0983901739874 565.839613267439 881.9515761542442 647.6972936575246 Q 884.8047621345011 729.5549740476101 834.9842555289973 727.9105059217834 Q 785.1637489234936 726.2660377959565 742.3684495039378 732.5065022021331 Q 699.573150084382 738.7469666083095 662.6214555675028 731.8382839196404 Q 625.6697610506236 724.9296012309713 576.3887918767455 726.4436507949063 Q 527.1078227028675 727.9577003588411 489.74093064097116 733.2162583792735 Q 452.37403857907486 738.4748163997059 375.4430655646504 732.161895128185 Q 298.51209255022593 725.8489738566643 228.90780598464193 730.4280838289553 Q 159.3035194190579 735.0071938012462 85.79243315672646 729.4304544713511 Q 12.281346894395018 723.8537151414561 10.285858868012394 682.9014295078439 Q 8.290370841629771 641.9491438742316 13.155786318120448 563.2702410849287 Q 18.021201794611123 484.5913382956257 11.036005819358957 444.7554954824171 Q 4.050809844106792 404.91965266920846 6.684704369570692 329.1231545058249 Q 9.318598895034594 253.32665634244142 10.052239454261613 210.6055863327645 Q 10.785880013488631 167.88451632308755 7.332697860533197 90.04185312537203 Q 3.879515707577763 12.199189927656493 59.03494027313544 12.433952425376745 Q 114.19036483869311 12.668714923097 169.77402730075664 12.296181217624149"></path></clippath></defs></svg><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">attr</span><span class="token punctuation">(</span>attribute<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  elements<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>ele <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      ele<span class="token punctuation">.</span><span class="token function">removeAttribute</span><span class="token punctuation">(</span>attribute<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      ele<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span>attribute<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">return</span> <span class="token punctuation">{</span>
+  on<span class="token punctuation">,</span>
+  children<span class="token punctuation">,</span>
+  addClass<span class="token punctuation">,</span>
+  removeClass<span class="token punctuation">,</span>
+  attr<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Now we need to make sure this item is being added to the modal. The nice thing about having a central store is that now we only need to add another callback to get this to work. Add this to <code>modal.js</code>.</p>
+<pre class="language-javascript" data-title="javascript" style="clip-path: url(&quot;#svg-blob__clip--eb018ad3-070e-446f-8b99-ac3f0bf886ce&quot;);"><svg viewBox="0 0 891 372" class="svg-blob__svg"><defs><clippath id="svg-blob__clip--eb018ad3-070e-446f-8b99-ac3f0bf886ce"><path class="svg-blob__path" d="M 72.68893790870014 10.736158346320932 Q 72.68893790870014 10.736158346320932 116.99955149630458 10.670028457134277 Q 161.310165083909 10.603898567947622 222.2782197246248 10.953046898937338 Q 283.2462743653406 11.302195229927053 327.0469759129537 8.291919366473243 Q 370.84767746056684 5.281643503019434 441.5766954072334 9.480082022087224 Q 512.3057133538999 13.678520541155013 549.020921923521 14.891257217602384 Q 585.736130493142 16.103993894049754 640.5518647741005 14.187546590763713 Q 695.3675990550591 12.271099287477671 738.0708285416192 9.674464702574674 Q 780.7740580281792 7.077830117671679 831.051885497239 10.618044163540265 Q 881.329712966299 14.158258209408851 878.0519863562138 62.8410283646062 Q 874.7742597461285 111.52379851980355 876.7191290218075 155.17215733287307 Q 878.6639982974864 198.82051614594258 883.1260672358133 238.03264971895584 Q 887.5881361741401 277.2447832919691 880.1001652022351 320.08787259829296 Q 872.61219423033 362.93096190461677 811.1582077933322 360.12601725215904 Q 749.7042213563342 357.3210725997014 697.5650811059203 359.4478092346516 Q 645.4259408555064 361.5745458696018 604.6749219928922 364.46975541316846 Q 563.9239031302782 367.3649649567351 492.9486098183813 364.6645039870326 Q 421.97331650648454 361.9640430173302 360.99639170020635 363.0095489752146 Q 300.01946689392815 364.05505493309903 255.93207545810327 365.98794670914094 Q 211.84468402227836 367.9208384851828 151.67654438665042 365.3412519379756 Q 91.50840475102248 362.7616653907683 47.90480432653036 363.1599821858481 Q 4.301203902038239 363.5582989809278 8.04513707497787 328.77296110137263 Q 11.789070247917499 293.9876232218175 8.061792277566495 221.03100776089292 Q 4.334514307215491 148.07439229996837 5.27094171693588 79.78636677002564 Q 6.20736912665627 11.498341240082919 39.44815351767821 11.117249793201925 Q 72.68893790870014 10.736158346320932 116.99955149630458 10.670028457134277"></path></clippath></defs></svg><code class="language-javascript">store<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'ITEM_ADDED'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> items<span class="token punctuation">,</span> cart <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> cartArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>cart<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> cartItems <span class="token operator">=</span> cartArray<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>itemId <span class="token operator">=&gt;</span> <span class="token function">modalItem</span><span class="token punctuation">(</span>items<span class="token punctuation">[</span>itemId<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> cartList <span class="token operator">=</span> <span class="token function">addClass</span><span class="token punctuation">(</span><span class="token function">ul</span><span class="token punctuation">(</span><span class="token operator">...</span>cartItems<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'menu'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#cart-items'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">children</span><span class="token punctuation">(</span>cartList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Again, we are adding a callback to the <code>ITEM_ADDED</code> event on the store. We are grabbing the items and cart out of the store. Because the cart is a <code>Set</code> and those can be weird to iterate over, I am using the spread operator along with array braces to turn the <code>Set</code> into an array. Next, we map over the cart array and create an array of <code>modalItems</code> that are in the array instead. We then wrap this all in a <code>ul</code> with a class of <code>menu</code> and add it to the DOM as children of <code>#cart-items</code>.</p>
+<p>Let's try this out in our browser. If you click add cart on an item, it will add it to our store, which triggers an event to fade the necessary items on the menu and add the item onto the modal. Sweet!</p>
+<p>Now that all of that is out of the way, we are ready to implement the final piece: removing an item from the cart.</p>
+<p class="m-t-md">
+Like this article?
+<a href="https://twitter.com/chrisoncode" title="Follow @chrisoncode on Twitter">
+Follow @chrisoncode on Twitter
+</a>
+</p>
+</div>
+<div class="course-next has-text-right m-t-lg">
+<a href="https://scotch.io/courses/build-an-interactive-javascript-food-menu/remove-from-cart" class="button is-large is-info">
+<small class="next-lesson">Next Lesson:</small>
+<span>Remove from Cart</span>
+</a>
+</div>
+<div class="m-t-lg">
+<div id="comments" class="article-comments" style="
+        background: #faf8f4;
+        padding: 0 25px;
+        border-radius: 10px;
+        border: solid 1px #f8f2e8;
+        box-shadow: 0 0px 3px 0 rgba(88, 88, 102, .07);
+    ">
+<div class="inject-comments" data-post-url="https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal" data-post-id="L-1106">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="column is-narrow is-right ">
+<div class="article-inner">
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+</footer>
+</article>
+</main>
+<a href="https://do.co/doscotch50" class="hero" style="background-image: url(&#39;https://scotch-res.cloudinary.com/image/upload/v1581607302/digitalocean_267a5127-ea48-4b3c-b8a9-82218d8505d9_website-hosting-hero_2_lalem1.jpg&#39;); background-size: cover;">
+<div class="hero-body" style="padding-top: 70px; padding-bottom: 70px;">
+<div class="container" style="display: flex; justify-content: center; align-items: center;">
+<h3 class="title is-2 m-y-0 m-r-lg" style="line-height: 2; color: white;">Host websites with a <strong class="m-x-xs">$100 credit</strong></h3>
+<button class="button is-danger" style="height: auto; padding: 30px 40px; font-size: 24px;">Get Started</button>
+</div>
+</div>
+</a>
+
+<footer id="scotchy-footer" class="section is-small p-t-xs p-b-sm">
+<div class="footer__projects is-hidden-mobile is-hidden-tablet-only">
+<div class="container">
+<div class="columns center-flex-v">
+<div class="column is-8">
+<div class="footer__about">
+<div class="about__title">
+<div class="logo center-flex-v" style="padding-bottom: 80px; padding-top: 80px;">
+<img data-src="https://scotch-res.cloudinary.com/image/upload/v1582140584/scotch-do-logo_gytvv1.png" class="lazy" width="70">
+</div>
+<h4 style="display: flex; align-items: center;">Scotch <span style="font-size: 14px; margin-left: 8px;">by</span> <a href="https://twitter.com/chrisoncode" class="has-text-light" style="
+                                background: #1e99e6;
+                                border-radius: 3px;
+                                color: #fff;
+                                font-size: 14px;
+                                display: inline-block;
+                                padding: 3px 6px;
+                                letter-spacing: 0.5px;
+                                margin-left: 9px;
+                                ">@chrisoncode</a> <span style="font-size: 14px; margin-left: 8px;">at</span> <a href="https://twitter.com/digitalocean" class="has-text-light" style="
+                                margin-left: 9px; margin-bottom: 2px;
+                                "><img class="lazy" data-src="/img/logos/digital-ocean.png" alt="Digital Ocean" style="padding-top: 4px; width: 125px;"></a></h4>
+</div>
+<p class="p-r-lg m-b-xs">Top shelf learning. Dev tutorials explaining the code <strong style="color: #DDD">and the choices behind it all.</strong></p>
+<p>Made with 💖 by <a href="https://twitter.com/chrisoncode" class="has-text-grey">@chrisoncode</a> and <a href="https://twitter.com/whatnicktweets" class="has-text-grey">Nick</a>.</p>
+<ul class="footer-social-links list-unstyled">
+<li><a href="https://twitter.com/scotch_io" class="icon-twitter" title="Follow Scotch on Twitter">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 410.155 410.155" style="enable-background:new 0 0 410.155 410.155;" xml:space="preserve" width="50" height="50">
+<path style="fill:#23A0F2;" d="M403.632,74.18c-9.113,4.041-18.573,7.229-28.28,9.537c10.696-10.164,18.738-22.877,23.275-37.067
+	l0,0c1.295-4.051-3.105-7.554-6.763-5.385l0,0c-13.504,8.01-28.05,14.019-43.235,17.862c-0.881,0.223-1.79,0.336-2.702,0.336
+	c-2.766,0-5.455-1.027-7.57-2.891c-16.156-14.239-36.935-22.081-58.508-22.081c-9.335,0-18.76,1.455-28.014,4.325
+	c-28.672,8.893-50.795,32.544-57.736,61.724c-2.604,10.945-3.309,21.9-2.097,32.56c0.139,1.225-0.44,2.08-0.797,2.481
+	c-0.627,0.703-1.516,1.106-2.439,1.106c-0.103,0-0.209-0.005-0.314-0.015c-62.762-5.831-119.358-36.068-159.363-85.14l0,0
+	c-2.04-2.503-5.952-2.196-7.578,0.593l0,0C13.677,65.565,9.537,80.937,9.537,96.579c0,23.972,9.631,46.563,26.36,63.032
+	c-7.035-1.668-13.844-4.295-20.169-7.808l0,0c-3.06-1.7-6.825,0.485-6.868,3.985l0,0c-0.438,35.612,20.412,67.3,51.646,81.569
+	c-0.629,0.015-1.258,0.022-1.888,0.022c-4.951,0-9.964-0.478-14.898-1.421l0,0c-3.446-0.658-6.341,2.611-5.271,5.952l0,0
+	c10.138,31.651,37.39,54.981,70.002,60.278c-27.066,18.169-58.585,27.753-91.39,27.753l-10.227-0.006
+	c-3.151,0-5.816,2.054-6.619,5.106c-0.791,3.006,0.666,6.177,3.353,7.74c36.966,21.513,79.131,32.883,121.955,32.883
+	c37.485,0,72.549-7.439,104.219-22.109c29.033-13.449,54.689-32.674,76.255-57.141c20.09-22.792,35.8-49.103,46.692-78.201
+	c10.383-27.737,15.871-57.333,15.871-85.589v-1.346c-0.001-4.537,2.051-8.806,5.631-11.712c13.585-11.03,25.415-24.014,35.16-38.591
+	l0,0C411.924,77.126,407.866,72.302,403.632,74.18L403.632,74.18z"></path>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+</a></li>
+<li><a href="https://facebook.com/scotchdevelopment" class="icon-facebook" title="Follow Scotch on Facebook">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="50" height="50" viewBox="0 0 96.124 96.123" style="enable-background:new 0 0 96.124 96.123;" xml:space="preserve">
+<g>
+<path d="M72.089,0.02L59.624,0C45.62,0,36.57,9.285,36.57,23.656v10.907H24.037c-1.083,0-1.96,0.878-1.96,1.961v15.803   c0,1.083,0.878,1.96,1.96,1.96h12.533v39.876c0,1.083,0.877,1.96,1.96,1.96h16.352c1.083,0,1.96-0.878,1.96-1.96V54.287h14.654   c1.083,0,1.96-0.877,1.96-1.96l0.006-15.803c0-0.52-0.207-1.018-0.574-1.386c-0.367-0.368-0.867-0.575-1.387-0.575H56.842v-9.246   c0-4.444,1.059-6.7,6.848-6.7l8.397-0.003c1.082,0,1.959-0.878,1.959-1.96V1.98C74.046,0.899,73.17,0.022,72.089,0.02z" fill="#FFFFFF"></path>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+</a></li>
+<li><a href="https://github.com/scotch-io" class="icon-github" title="Follow Scotch on GitHub">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="50" height="50" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<g>
+<path d="M256,0C114.615,0,0,114.615,0,256s114.615,256,256,256s256-114.615,256-256S397.385,0,256,0z M408.027,408.027   c-19.76,19.759-42.756,35.267-68.354,46.094c-6.502,2.75-13.105,5.164-19.801,7.246V423c0-20.167-6.916-35-20.75-44.5   c8.668-0.833,16.625-2,23.875-3.5s14.918-3.667,23-6.5c8.084-2.833,15.334-6.208,21.75-10.125c6.418-3.917,12.584-9,18.5-15.25   c5.918-6.25,10.875-13.333,14.875-21.25s7.168-17.417,9.5-28.5c2.334-11.083,3.5-23.292,3.5-36.625c0-25.833-8.416-47.833-25.25-66   c7.668-20,6.834-41.75-2.5-65.25l-6.25-0.75c-4.332-0.5-12.125,1.333-23.375,5.5s-23.875,11-37.875,20.5   c-19.832-5.5-40.416-8.25-61.749-8.25c-21.5,0-42,2.75-61.5,8.25c-8.833-6-17.208-10.958-25.125-14.875s-14.25-6.583-19-8   s-9.167-2.292-13.25-2.625s-6.708-0.417-7.875-0.25s-2,0.333-2.5,0.5c-9.333,23.667-10.167,45.417-2.5,65.25   c-16.833,18.167-25.25,40.167-25.25,66c0,13.333,1.167,25.542,3.5,36.625s5.5,20.583,9.5,28.5s8.958,15,14.875,21.25   s12.083,11.333,18.5,15.25s13.667,7.292,21.75,10.125s15.75,5,23,6.5s15.208,2.667,23.875,3.5c-13.667,9.333-20.5,24.167-20.5,44.5   v39.115c-7.549-2.247-14.99-4.902-22.3-7.994c-25.597-10.827-48.594-26.335-68.353-46.094   c-19.758-19.758-35.267-42.756-46.093-68.354C46.679,313.195,41,285.043,41,256s5.679-57.195,16.879-83.675   c10.827-25.597,26.335-48.594,46.093-68.353c19.758-19.759,42.756-35.267,68.353-46.093C198.805,46.679,226.957,41,256,41   s57.195,5.679,83.676,16.879c25.598,10.827,48.594,26.335,68.354,46.093c19.758,19.758,35.266,42.756,46.092,68.353   C465.32,198.805,471,226.957,471,256s-5.68,57.195-16.879,83.675C443.295,365.271,427.785,388.27,408.027,408.027z" fill="#FFFFFF"></path>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+</a></li>
+<li><a href="https://www.youtube.com/channel/UCmXVXfidLZQkppLPaATcHag" class="icon-github" title="Follow Scotch on YouTube">
+<svg class="svg-inline--fa fa-youtube fa-w-18 fa-fw has-text-danger" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg><!-- <i class="fab fa-fw fa-youtube has-text-danger"></i> -->
+</a></li>
+</ul>
+</div>
+</div>
+<div class="column is-4 has-text-right">
+<style>
+                        .proudly { color: #3273dc !important }
+                        .proudly:hover { color: #5691f2 !important }
+                    </style>
+<a href="https://do.co/doscotch50">
+<span class="proudly">Proudly hosted by<span><br>
+<img class="lazy" data-src="/img/logos/digital-ocean.png" alt="Digital Ocean" style="padding-top: 4px; width: 250px;">
+</span></span></a>
+<nav class="m-t-md">
+<ul class="list-unstyled" style="display: flex; align-items: center; justify-content: center; height: 100%">
+<li><a href="https://scotch.io/sponsor" style="color: #aaa; margin-right: 8px;">Sponsor</a></li>
+<li><a href="https://scotch.io/privacy" style="color: #aaa; margin-right: 8px;">Privacy</a></li>
+<li><a href="https://scotch.io/terms" style="color: #aaa; margin-right: 8px;">Terms</a></li>
+<li><a href="https://scotch.io/rules" style="color: #aaa; margin-right: 8px;">Rules</a></li>
+<li>1853-2020 © Scotch.io, LLC</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="./Add to Cart and Show Items in Modal ― Scotch.io_files/monetization.js.download" data-cfasync="false"></script>
+<script src="./Add to Cart and Show Items in Modal ― Scotch.io_files/scotch.js.download" data-cfasync="false" defer=""></script>
+<script>
+    if (window.bsa_targeting !== undefined) {
+        window.bsa_targeting.push(['scotchio_section', ['single-lesson']]);
+        window.bsa_targeting.push(['scotchio_lessonid', ['1106']]);
+    }
+</script>
+<script>
+    if (window.bsa_targeting !== undefined) {
+            }
+</script>
+<script src="./Add to Cart and Show Items in Modal ― Scotch.io_files/polyfill.min.js.download" defer=""></script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-36045075-1', 'auto');
+ga('set', 'transport', 'beacon');
+ga('send', 'pageview');
+</script>
+<script src="./Add to Cart and Show Items in Modal ― Scotch.io_files/perlin.min.js.download"></script>
+<script src="./Add to Cart and Show Items in Modal ― Scotch.io_files/resize-detector.min.js.download"></script>
+<script src="./Add to Cart and Show Items in Modal ― Scotch.io_files/svg-blob.min.js.download"></script>
+<script src="./Add to Cart and Show Items in Modal ― Scotch.io_files/manifest.js.download" defer=""></script>
+<script src="./Add to Cart and Show Items in Modal ― Scotch.io_files/vendor.js.download" defer=""></script>
+<script>
+    // used to lazyload spot im in lazyload-comments.js
+    window.scotchy = window.scotchy || {};
+    window.scotchy.articleId =  "L-1106";
+    window.scotchy.articleUrl = "https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal";
+</script>
+<script src="./Add to Cart and Show Items in Modal ― Scotch.io_files/app.js.download" defer=""></script>
+<script>
+        
+        
+        // author
+        if (window.ga !== undefined) {
+            window.ga('set', 'contentGroup1', "Chris on Code")
+            window.ga('set', 'dimension1', "Chris on Code")
+        }
+    </script>
+<script>
+    const twitchBanner = document.getElementById('twitch-banner');
+
+    fetch('/api/twitch/check')
+        .then(function(resp) {
+            return resp.json()
+        })
+        .then(function(data) {
+            if (data.is_streaming) {
+                twitchBanner.style.display = 'block';
+                document.getElementById('tag-nav').style.display = 'none'
+            }
+        })
+        .catch(function(err) {});
+</script>
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "@id": "https://scotch.io#organization",
+    "name": "Scotch.io",
+    "url": "https://scotch.io",
+    "sameAs": [
+        "http://www.facebook.com/scotchdevelopment",
+        "http://twitter.com/scotch_io",
+        "http://instagram.com/scotch_io",
+        "http://www.linkedin.com/in/scotch_io",
+        "http://plus.google.com/scotch_io"
+    ],
+    "legalName": "Scotch.io, LLC",
+    "logo": {
+        "@type": "ImageObject",
+        "url": "https://scotch.io/img/school-logo-sticker.png",
+        "width": 37,
+        "height": 60
+    },
+    "founder": {
+        "@type": "Person",
+        "name": "Chris Sevilleja",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://scotch-res.cloudinary.com/image/upload/w_300,q_auto:good,f_auto,c_fill,g_face/media/1/w7Vhk81SyClJPlDQPMLh_17795826_10154678250924582_8102840950354615336_n.jpg",
+            "width": 300,
+            "height": 300
+        }
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "@id": "https://scotch.io#website",
+    "url": "https://scotch.io",
+    "name": "Scotch",
+    "alternateName": "Scotch.io",
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://scotch.io/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    "author": {
+        "@id": "https://scotch.io#organization"
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal",
+    "url": "https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal",
+
+        "headline": "Add to Cart and Show Items in Modal",
+    
+    "description": "We have buttons to add the item into our cart.  However, it doesn&#039;t actually do anything.  First, we need to make sure when the button is clicked, that it is added to our central store.  Add the following to setup_listeners.js. function getP",
+
+        "position": 12,
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://scotch.io/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+
+    "publisher": {
+        "@id": "https://scotch.io#organization"
+    },
+
+    
+        "dateCreated": "2016-12-20 16:07:44",
+    
+    
+    
+        "dateModified": "2018-08-26 21:38:32",
+    
+    
+    "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@id": "https://scotch.io",
+                    "name": "Home"
+                }
+            },
+
+                            {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item": {
+                        "@id": "https://scotch.io/courses",
+                        "name": "Courses"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "item": {
+                        "@id": "https://scotch.io/courses/build-an-interactive-javascript-food-menu",
+                        "name": "Build an Interactive JavaScript Food Menu"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "item": {
+                        "@id": "https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal",
+                        "name": "Add to Cart and Show Items in Modal"
+                    }
+                }
+                    ]
+    },
+    
+    "sourceOrganization": {
+        "@id": "https://scotch.io#organization"
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "TechArticle",
+    "@id": "https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal#article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal"
+    },
+    "url": "https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal",
+    "headline": "Add to Cart and Show Items in Modal",
+    "wordCount": 758,
+    "description": "We have buttons to add the item into our cart.  However, it doesn&#039;t actually do anything.  First, we need to make sure when the button is clicked, that it is added to our central store.  Add the following to setup_listeners.js. function getP",
+    "audience": "web developers and designers",
+    "discussionUrl": "https://scotch.io/courses/build-an-interactive-javascript-food-menu/add-to-cart-and-show-items-in-modal#comments",
+
+    
+        "image": {
+        "@type": "ImageObject",
+        "url": "https://scotch-res.cloudinary.com/image/upload/w_1500,q_auto:good,f_auto/media/1/RdliiByJRFimv38cgQzj_build-an-interactive-js-menu.png.jpg",
+        "height": 750,
+        "width": 1500
+    },
+    
+        "keywords": "",
+    
+        "dateCreated": "2016-12-20 16:07:44",
+    
+    
+    
+        "dateModified": "2018-08-26 21:38:32",
+    
+    
+    
+        "author": {
+        "@type": "Person",
+        "name": "Chris on Code",
+
+                "image": {
+            "@type": "ImageObject",
+            "url": "https://scotch-res.cloudinary.com/image/upload/w_300,h_300,q_auto:good,f_auto,c_fill,g_face/media/1/w7Vhk81SyClJPlDQPMLh_17795826_10154678250924582_8102840950354615336_n.jpg",
+            "height": 300,
+            "width": 300
+        },
+        
+        "url": "https://scotch.io/@chris"
+    },
+    
+    "publisher": {
+        "@id": "https://scotch.io#organization"
+    }
+}
+</script>
+<script>
+(function(m,a,i,l,e,r){ m['MailerLiteObject']=e;function f(){
+var c={ a:arguments,q:[]};var r=this.push(c);return "number"!=typeof r?r:f.bind(c.q);}
+f.q=f.q||[];m[e]=m[e]||f.bind(f.q);m[e].q=m[e].q||f.q;r=a.createElement(i);
+var _=a.getElementsByTagName(i)[0];r.async=1;r.src=l+'?v'+(~~(new Date().getTime()/1000000));
+_.parentNode.insertBefore(r,_);})(window, document, 'script', 'https://static.mailerlite.com/js/universal.js', 'ml');
+
+var ml_account = ml('accounts', '758636', 'y5e6w4v2p6', 'load');
+</script>
+
+
+<script async="" src="./Add to Cart and Show Items in Modal ― Scotch.io_files/lazyload.min.js.download"></script><script type="text/javascript" id="">function getCookie(d){d+="\x3d";var b=decodeURIComponent(document.cookie);b=b.split(";");for(var c=0;c<b.length;c++){for(var a=b[c];" "==a.charAt(0);)a=a.substring(1);if(0==a.indexOf(d))return a.substring(d.length,a.length)}return""}function setCookie(d,b,c){var a=new Date;a.setTime(a.getTime()+6E4*c);document.cookie=d+"\x3d"+escape(b)+(null==c?"":";expires\x3d"+a.toGMTString())}
+if(""==getCookie("sessionID")){var randomNumberString=Math.floor(1E7*Math.random()+1).toString();setCookie("sessionID",randomNumberString,30)}else{var sessionID=getCookie("sessionID");setCookie("sessionID",sessionID,30)};</script><script type="text/javascript" id="">window.addEventListener("cookieconsent_statuschange",function(){window.dataLayer.push({event:"cc_dismiss"})});function getCookie(a){var b="; "+document.cookie;a=b.split("; "+a+"\x3d");if(2==a.length)return a.pop().split(";").shift()}getCookie("cookieconsent_status")&&window.dataLayer.push({event:"cc_dismiss"});</script></body></html>

@@ -1,0 +1,44 @@
+.article {
+	/*width: 80%;
+	margin: auto;*/
+	background-color: #f2f2f2;
+}
+.col-3 {
+	/*float: left;*/
+	padding-left: 10px;
+}
+/*.netdesk {
+
+}*/
+.col-2 {
+	float: left;
+}
+h1 {
+	text-align: center;
+}
+.main {
+	width: 60%;
+	margin: auto;
+	background-color: #ffffff;
+}
+.image {
+	background-image: url("TH09Scindia-office.jpeg");
+	height: 500px;
+}
+/*.image span{
+    position:absolute;
+    bottom:0;
+    right:0;
+}*/
+.text-section {
+	font-size: 1.1em;
+	font-family: sans-serif;
+	width: 60%;
+	padding-left: 300px;
+}
+.image2 {
+	padding: 20px 20px 20px 20px;
+	border: 1px solid #f2f2f2;
+	width: 45%;
+	margin: auto;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div>
+        <p id="myPara">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi, nisi.</p>
+        <p>Select a font: <select name="font" id="font">
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+            </select>
+            Select a background colour: <select name="bcolor" id="bcolor">
+                <option value="Red">Red</option>
+                <option value="Green">Green</option>
+                <option value="Blue">Blue</option>
+            </select>
+            Select a text colour: <select name="tcolor" id="tcolor">
+                <option value="Red">Red</option>
+                <option value="Green">Green</option>
+                <option value="Blue">Blue</option>
+                <option value="White">White</option>
+            </select>
+            Select a text size: <select name="fsize" id="fsize">
+                <option value="1em">10</option>
+                <option value="2em">20</option>
+                <option value="3em">30</option>
+                <option value="4em">40</option>
+            </select>
+            Select a border: <select name="border" id="border">
+                <option value="Solid">Solid</option>
+                <option value="Dashed">Dashed</option>
+            </select>
+        </p>
+        <button type="button">APPLY</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        $('button').click(function () {
+            $('#myPara').css({ "font-family": $('#font').val(), "background-color": $('#bcolor').val(), "color": $('#tcolor').val(), "font-size": $('#fsize').val(), "border": $('#border').val() });
+        });
+    </script>
+</body>
+
+</html>
